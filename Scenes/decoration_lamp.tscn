@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bh2pfrf7p4xuf"]
+
+[ext_resource type="Script" path="res://Scripts/decoration_lamp.gd" id="1_luwur"]
+[ext_resource type="Texture2D" uid="uid://b3yrhgseim1v" path="res://Assets/sprites/objects/decoration_lamp.png" id="2_rlf83"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fme6"]
+atlas = ExtResource("2_rlf83")
+region = Rect2(32.5, 32, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wb3o"]
+atlas = ExtResource("2_rlf83")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3k6n"]
+atlas = ExtResource("2_rlf83")
+region = Rect2(32.5, -0.5, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_clll3"]
+atlas = ExtResource("2_rlf83")
+region = Rect2(0, 0.3, 32, 31.8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m7dbo"]
+size = Vector2(5, 3.5)
+
+[node name="DecorationLamp" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_luwur")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(1, -12)
+texture = SubResource("AtlasTexture_5fme6")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-12, -12)
+texture = SubResource("AtlasTexture_5wb3o")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -28)
+texture = SubResource("AtlasTexture_s3k6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(12, -12)
+texture = SubResource("AtlasTexture_clll3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_m7dbo")

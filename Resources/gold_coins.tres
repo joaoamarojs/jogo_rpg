@@ -1,0 +1,59 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=12 format=3 uid="uid://c4ef0xn7wayut"]
+
+[ext_resource type="Shape2D" uid="uid://fxycf315w00d" path="res://Resources/heart_collision_shape.tres" id="1_5gyrt"]
+[ext_resource type="Texture2D" uid="uid://ci020mnr7ocvc" path="res://Assets/sprites/objects/objects_02.png" id="1_7647g"]
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="2_ilkko"]
+[ext_resource type="Script" path="res://Scripts/item_effect.gd" id="2_m815d"]
+[ext_resource type="AudioStream" uid="uid://dam3b41skimh4" path="res://Resources/Sounds/28_pickup_coin_1.wav" id="3_acdi0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d52y"]
+atlas = ExtResource("1_7647g")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x4mx"]
+atlas = ExtResource("1_7647g")
+region = Rect2(16, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f007o"]
+atlas = ExtResource("1_7647g")
+region = Rect2(32, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6oowh"]
+atlas = ExtResource("1_7647g")
+region = Rect2(48, 64, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rhfe2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8d52y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x4mx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f007o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6oowh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q3nk"]
+atlas = ExtResource("1_7647g")
+region = Rect2(48, 64, 16, 16)
+
+[resource]
+script = ExtResource("2_ilkko")
+item_type = "NotEquipable"
+ground_collision_shape = ExtResource("1_5gyrt")
+name = "Moeda"
+animation = SubResource("SpriteFrames_rhfe2")
+side_texture = SubResource("AtlasTexture_6q3nk")
+description = ""
+pickup_sound = ExtResource("3_acdi0")
+use_on_pickup = false
+effects = Array[ExtResource("2_m815d")]([])

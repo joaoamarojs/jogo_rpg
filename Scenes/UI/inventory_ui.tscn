@@ -1,0 +1,186 @@
+[gd_scene load_steps=16 format=3 uid="uid://bkgnhnn4yyy2c"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_ui.gd" id="1_meuak"]
+[ext_resource type="Texture2D" uid="uid://cnfkmoh3705mu" path="res://Assets/Retro Inventory/Scaled 3x/Inventory_9Slices.png" id="2_xjddx"]
+[ext_resource type="PackedScene" uid="uid://ctef00dn07bjb" path="res://Scenes/UI/inventory_slot.tscn" id="3_2piq2"]
+[ext_resource type="Script" path="res://Scripts/inventory_container.gd" id="3_3bc3x"]
+[ext_resource type="Texture2D" uid="uid://j4h0yrpooi5t" path="res://Assets/sprites/characters/player.png" id="3_gcw2e"]
+[ext_resource type="PackedScene" uid="uid://cbc8sry3t213u" path="res://Scenes/UI/inventory_slot_sword.tscn" id="3_gleoc"]
+[ext_resource type="Resource" uid="uid://34rpxxba18mo" path="res://Resources/player_inventory.tres" id="4_dyvvw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u6p73"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_xjddx")
+texture_margin_left = 18.0
+texture_margin_top = 18.0
+texture_margin_right = 18.0
+texture_margin_bottom = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_snw8g"]
+atlas = ExtResource("3_gcw2e")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm6rh"]
+atlas = ExtResource("3_gcw2e")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0mrh"]
+atlas = ExtResource("3_gcw2e")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45m5r"]
+atlas = ExtResource("3_gcw2e")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m018"]
+atlas = ExtResource("3_gcw2e")
+region = Rect2(192, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa43t"]
+atlas = ExtResource("3_gcw2e")
+region = Rect2(240, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mr1fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_snw8g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm6rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0mrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45m5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m018")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa43t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="InventoryUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_meuak")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.165656, 0.165656, 0.165656, 0.780392)
+
+[node name="PanelContainer2" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 243.0
+offset_top = 271.0
+offset_right = 349.0
+offset_bottom = 447.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_u6p73")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer2"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer2/GridContainer"]
+custom_minimum_size = Vector2(66, 66)
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/PanelContainer2/GridContainer/PanelContainer"]
+position = Vector2(31, 41)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_mr1fn")
+autoplay = "default"
+
+[node name="InventorySlotSword" parent="Control/PanelContainer2/GridContainer" instance=ExtResource("3_gleoc")]
+layout_mode = 2
+
+[node name="PanelContainer3" type="PanelContainer" parent="Control"]
+layout_mode = 2
+offset_left = 411.0
+offset_top = 60.0
+offset_right = 797.0
+offset_bottom = 178.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_u6p73")
+
+[node name="Label" type="Label" parent="Control/PanelContainer3"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 57
+text = "INVENTARIO"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 411.0
+offset_top = 271.0
+offset_right = 797.0
+offset_bottom = 447.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_u6p73")
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+columns = 5
+script = ExtResource("3_3bc3x")
+data = ExtResource("4_dyvvw")
+
+[node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+layout_mode = 2
+
+[node name="ItemDescription" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 442.0
+offset_top = 451.0
+offset_right = 771.0
+offset_bottom = 546.0
+text = "
+"
+autowrap_mode = 2

@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://2y2u8lqydsby"]
+
+[ext_resource type="Script" path="res://Scripts/chest_dropper.gd" id="1_7s4jt"]
+[ext_resource type="PackedScene" uid="uid://bqudavxgfqooj" path="res://Scenes/PersistentDataHelper/PersistentDataHelper.tscn" id="2_3bkna"]
+[ext_resource type="AudioStream" uid="uid://dtepl0puus6vb" path="res://Resources/Sounds/dungeon_discovery.wav" id="2_hfuxq"]
+[ext_resource type="Texture2D" uid="uid://ci020mnr7ocvc" path="res://Assets/sprites/objects/objects_02.png" id="3_k8kpg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icbqa"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(320, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph43g"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(64, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y8a0p"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(96, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxo5u"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(128, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibhtt"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(160, 65, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mkcon"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kiwc0"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4t4q"]
+atlas = ExtResource("3_k8kpg")
+region = Rect2(256, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_de4sf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icbqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph43g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y8a0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxo5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibhtt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mkcon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kiwc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4t4q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icbqa")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="ChestDropper" type="Node2D"]
+script = ExtResource("1_7s4jt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -58.0
+offset_top = -16.0
+offset_right = 57.0
+offset_bottom = 7.0
+theme_override_font_sizes/font_size = 8
+text = "DROP DO BAÚ"
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hfuxq")
+
+[node name="PersistentDataHelper" parent="." instance=ExtResource("2_3bkna")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_de4sf")
+frame = 8
+frame_progress = 1.0

@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=10 format=3 uid="uid://b3xfc21yuqvy1"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="1_0p0bl"]
+[ext_resource type="Script" path="res://Scripts/item_effect.gd" id="1_jtwpc"]
+[ext_resource type="Texture2D" uid="uid://cnd3rh5hrqkv" path="res://Assets/sprites/objects/red_potion.png" id="1_lsbvc"]
+[ext_resource type="Script" path="res://Scripts/item_effect_heal.gd" id="3_22fdv"]
+[ext_resource type="Shape2D" uid="uid://fxycf315w00d" path="res://Resources/heart_collision_shape.tres" id="4_g03kd"]
+[ext_resource type="AudioStream" uid="uid://fdes38outx8s" path="res://Resources/Sounds/30_pickup_heart_1.wav" id="5_u0lei"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1yjd"]
+atlas = ExtResource("1_lsbvc")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_flfri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1yjd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_w5e8y"]
+script = ExtResource("3_22fdv")
+heal_amount = 8
+use_description = "Recupera dois corações"
+
+[resource]
+script = ExtResource("1_0p0bl")
+ground_collision_shape = ExtResource("4_g03kd")
+name = "Poção Vermelha"
+animation = SubResource("SpriteFrames_flfri")
+side_texture = ExtResource("1_lsbvc")
+description = "Uma poção vermelha! Recupera dois corações!"
+pickup_sound = ExtResource("5_u0lei")
+use_on_pickup = false
+effects = Array[ExtResource("1_jtwpc")]([SubResource("Resource_w5e8y")])

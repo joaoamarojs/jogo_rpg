@@ -1,0 +1,79 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbrhuaduyaqpn"]
+
+[ext_resource type="Texture2D" uid="uid://ci0te7ccxc0nw" path="res://Assets/sprites/characters/npc_pickaxe.png" id="1_xur2y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qv632"]
+atlas = ExtResource("1_xur2y")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqn1e"]
+atlas = ExtResource("1_xur2y")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_miars"]
+atlas = ExtResource("1_xur2y")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4skv"]
+atlas = ExtResource("1_xur2y")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhspr"]
+atlas = ExtResource("1_xur2y")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2coi"]
+atlas = ExtResource("1_xur2y")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwlmh"]
+atlas = ExtResource("1_xur2y")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppf8d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qv632")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqn1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_miars")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4skv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhspr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2coi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwlmh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b50k8"]
+radius = 4.0
+height = 14.0
+
+[node name="NPCPickaxe" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_ppf8d")
+autoplay = "default"
+frame_progress = 0.966542
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_b50k8")

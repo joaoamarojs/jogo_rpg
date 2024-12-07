@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://ctef00dn07bjb"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_slot_ui.gd" id="1_5i4tr"]
+[ext_resource type="Texture2D" uid="uid://byq7tk3737jy7" path="res://Assets/sprites/objects/Inventory_select.png" id="1_dtdva"]
+[ext_resource type="Texture2D" uid="uid://bthp2mblikfc3" path="res://Assets/Retro Inventory/Scaled 3x/Inventory_Slot_1.png" id="2_mrg5s"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jfnto"]
+texture = ExtResource("1_dtdva")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nqbpx"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="InventorySlot" type="Button"]
+custom_minimum_size = Vector2(66, 66)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1086.0
+offset_bottom = -582.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxTexture_jfnto")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nqbpx")
+script = ExtResource("1_5i4tr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(33, 33)
+texture = ExtResource("2_mrg5s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 66.0
+offset_bottom = 66.0
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 57.0
+offset_bottom = 57.0
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 2

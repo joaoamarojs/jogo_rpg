@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=14 format=3 uid="uid://ca35ib3apmm8o"]
+
+[ext_resource type="Texture2D" uid="uid://cdgh21ne7su8g" path="res://Assets/sprites/objects/blue_ball.png" id="1_wtgt8"]
+[ext_resource type="Script" path="res://Scripts/item_effect.gd" id="2_ixrrd"]
+[ext_resource type="Script" path="res://Scripts/puzzle_item.gd" id="3_ahhd5"]
+[ext_resource type="Script" path="res://Scripts/npc_resource.gd" id="4_weomw"]
+[ext_resource type="Script" path="res://Scripts/item_effect_puzzle.gd" id="5_u6dbf"]
+[ext_resource type="Shape2D" uid="uid://fxycf315w00d" path="res://Resources/heart_collision_shape.tres" id="6_7pmn2"]
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="7_1ug54"]
+[ext_resource type="AudioStream" uid="uid://ch2ko7teuxfct" path="res://Resources/Sounds/42_Cling_climb_03.wav" id="7_weg2u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8g7q5"]
+atlas = ExtResource("1_wtgt8")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pk7up"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8g7q5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_eaq7k"]
+script = ExtResource("3_ahhd5")
+name = "Bola Azul"
+id = 3
+
+[sub_resource type="Resource" id="Resource_3dopb"]
+script = ExtResource("4_weomw")
+npc_name = " "
+dialog_audio_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_cicl1"]
+script = ExtResource("5_u6dbf")
+item = SubResource("Resource_eaq7k")
+npc_info = SubResource("Resource_3dopb")
+use_description = ""
+
+[resource]
+script = ExtResource("7_1ug54")
+ground_collision_shape = ExtResource("6_7pmn2")
+name = "Bola Azul"
+animation = SubResource("SpriteFrames_pk7up")
+side_texture = ExtResource("1_wtgt8")
+description = "Essa bola azul faz parte de Enigma...
+
+Pressione ENTER proximo a um pedestral"
+pickup_sound = ExtResource("7_weg2u")
+use_on_pickup = false
+effects = Array[ExtResource("2_ixrrd")]([SubResource("Resource_cicl1")])

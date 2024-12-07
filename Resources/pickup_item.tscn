@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bruhhll0mlqqv"]
+
+[ext_resource type="Script" path="res://Scripts/pickup_item.gd" id="1_ehckt"]
+[ext_resource type="Shape2D" uid="uid://fxycf315w00d" path="res://Resources/heart_collision_shape.tres" id="2_v83v1"]
+[ext_resource type="PackedScene" uid="uid://bqudavxgfqooj" path="res://Scenes/PersistentDataHelper/PersistentDataHelper.tscn" id="3_xkjye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vneur"]
+size = Vector2(10, 10)
+
+[node name="PickUpItem" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_ehckt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vneur")
+
+[node name="AudioPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = ExtResource("2_v83v1")
+
+[node name="PersistentDataHelper" parent="." instance=ExtResource("3_xkjye")]

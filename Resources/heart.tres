@@ -1,0 +1,64 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=14 format=3 uid="uid://c7hji6p7rw77i"]
+
+[ext_resource type="Texture2D" uid="uid://ci020mnr7ocvc" path="res://Assets/sprites/objects/objects_02.png" id="1_esjy6"]
+[ext_resource type="Shape2D" uid="uid://fxycf315w00d" path="res://Resources/heart_collision_shape.tres" id="2_flqg2"]
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="2_rh18m"]
+[ext_resource type="Script" path="res://Scripts/item_effect.gd" id="2_u7f5p"]
+[ext_resource type="Script" path="res://Scripts/item_effect_heal.gd" id="3_w2yrr"]
+[ext_resource type="AudioStream" uid="uid://fdes38outx8s" path="res://Resources/Sounds/30_pickup_heart_1.wav" id="3_xpwq3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uk7g"]
+atlas = ExtResource("1_esjy6")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8owi"]
+atlas = ExtResource("1_esjy6")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v043l"]
+atlas = ExtResource("1_esjy6")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wcid"]
+atlas = ExtResource("1_esjy6")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hou5v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uk7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8owi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v043l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wcid")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="Resource" id="Resource_jsu13"]
+script = ExtResource("3_w2yrr")
+heal_amount = 4
+use_description = ""
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgnj8"]
+atlas = ExtResource("1_esjy6")
+region = Rect2(0, 48, 16, 16)
+
+[resource]
+script = ExtResource("2_rh18m")
+ground_collision_shape = ExtResource("2_flqg2")
+name = "Coração"
+animation = SubResource("SpriteFrames_hou5v")
+side_texture = SubResource("AtlasTexture_jgnj8")
+description = ""
+pickup_sound = ExtResource("3_xpwq3")
+use_on_pickup = true
+effects = Array[ExtResource("2_u7f5p")]([SubResource("Resource_jsu13")])

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://biwdgtnk2s0kf"]
+
+[ext_resource type="Texture2D" uid="uid://cxiqj1t6f0oo" path="res://Assets/Retro Inventory/Scaled 2x/Hearts.png" id="1_cgrn8"]
+[ext_resource type="Script" path="res://Scripts/heart_gui.gd" id="1_lkg8c"]
+
+[node name="Heart" type="Control"]
+custom_minimum_size = Vector2(31, 31)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lkg8c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_cgrn8")
+centered = false
+hframes = 5
+vframes = 3
+frame = 4

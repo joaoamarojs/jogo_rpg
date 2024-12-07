@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba62ltp3d6now"]
+
+[ext_resource type="Texture2D" uid="uid://dk7a5qxl1pjlb" path="res://Assets/sprites/characters/toad.png" id="1_80kaw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b50k8"]
+radius = 4.0
+height = 14.0
+
+[node name="NPCToad" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, -9)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("1_80kaw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_b50k8")

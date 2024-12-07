@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://byu7ksxea2g4p"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_p2yxd"]
+[ext_resource type="Texture2D" uid="uid://bywflfk4uoixn" path="res://Assets/sprites/UI/title.png" id="1_yh1uc"]
+[ext_resource type="AudioStream" uid="uid://bfmpvarsj14k1" path="res://Resources/Sounds/001_hover_01.wav" id="2_gunub"]
+[ext_resource type="FontFile" uid="uid://cw7i6h4on5bdd" path="res://Assets/retganon.ttf" id="2_hcvk6"]
+[ext_resource type="AudioStream" uid="uid://cp8un4is0wduc" path="res://Resources/Sounds/013_Confirm_03.wav" id="3_dhhf0"]
+[ext_resource type="PackedScene" uid="uid://2qtrevekgf1s" path="res://Scenes/player_boy_spawn.tscn" id="4_admm1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_db0y4"]
+bg_color = Color(0.20656, 0.719073, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.700855, 0.954755, 0.916731, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_offset = Vector2(-7, 14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x5h2q"]
+bg_color = Color(0.433324, 0.644325, 0.644883, 0.466667)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_offset = Vector2(-7, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uacxf"]
+bg_color = Color(2.88785e-06, 0.68727, 0.682156, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 7
+shadow_offset = Vector2(-7, 10)
+
+[node name="MainMenu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_p2yxd")
+button_focus_audio = ExtResource("2_gunub")
+button_press_audio = ExtResource("3_dhhf0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.266667)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+position = Vector2(595, 192)
+texture = ExtResource("1_yh1uc")
+
+[node name="ButtonNovo" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 327.0
+offset_right = 811.0
+offset_bottom = 398.0
+theme_override_colors/font_focus_color = Color(0.8, 0.631373, 0, 1)
+theme_override_fonts/font = ExtResource("2_hcvk6")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/focus = SubResource("StyleBoxFlat_db0y4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x5h2q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uacxf")
+text = "NOVO JOGO"
+
+[node name="ButtonContinuar" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 404.0
+offset_top = 423.0
+offset_right = 811.0
+offset_bottom = 494.0
+theme_override_colors/font_focus_color = Color(0.8, 0.631373, 0, 1)
+theme_override_fonts/font = ExtResource("2_hcvk6")
+theme_override_font_sizes/font_size = 66
+theme_override_styles/focus = SubResource("StyleBoxFlat_db0y4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_x5h2q")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uacxf")
+text = "CONTINUAR"
+
+[node name="PlayerBoySpawn" parent="." instance=ExtResource("4_admm1")]
+visible = false
+position = Vector2(97, 345)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,145 @@
+[gd_scene load_steps=21 format=3 uid="uid://40qnfr8ynu6u"]
+
+[ext_resource type="Script" path="res://Scripts/spikes.gd" id="1_catc0"]
+[ext_resource type="Texture2D" uid="uid://clfp1auio7a6b" path="res://Assets/sprites/objects/spikes_tile_trap_anim_strip_12.png" id="2_420nk"]
+[ext_resource type="Script" path="res://Resources/HurtBox/hurt_box.gd" id="3_nkotj"]
+[ext_resource type="AudioStream" uid="uid://bekw8kf6xh0jb" path="res://Resources/Sounds/spikes_sound.mp3" id="4_8dqbf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u56hc"]
+atlas = ExtResource("2_420nk")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_noam1"]
+atlas = ExtResource("2_420nk")
+region = Rect2(160, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3oj4"]
+atlas = ExtResource("2_420nk")
+region = Rect2(176, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6lsc"]
+atlas = ExtResource("2_420nk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_567od"]
+atlas = ExtResource("2_420nk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n53y"]
+atlas = ExtResource("2_420nk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsoxn"]
+atlas = ExtResource("2_420nk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0vci"]
+atlas = ExtResource("2_420nk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e00ji"]
+atlas = ExtResource("2_420nk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvix8"]
+atlas = ExtResource("2_420nk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8m70"]
+atlas = ExtResource("2_420nk")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jprkk"]
+atlas = ExtResource("2_420nk")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbmb6"]
+atlas = ExtResource("2_420nk")
+region = Rect2(128, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jmkpf"]
+atlas = ExtResource("2_420nk")
+region = Rect2(144, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_av6o0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u56hc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_noam1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3oj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6lsc")
+}],
+"loop": false,
+"name": &"down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_567od")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n53y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsoxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0vci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e00ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvix8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8m70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jprkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbmb6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jmkpf")
+}],
+"loop": false,
+"name": &"up",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u18dh"]
+size = Vector2(10, 11)
+
+[node name="Spikes" type="Node2D"]
+script = ExtResource("1_catc0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_av6o0")
+animation = &"up"
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = ExtResource("3_nkotj")
+damage = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(8, 7.5)
+shape = SubResource("RectangleShape2D_u18dh")
+debug_color = Color(0.994036, 0, 0.228462, 0.42)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_8dqbf")
+volume_db = -32.225

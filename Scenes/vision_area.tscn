@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu5gmu86j8leo"]
+
+[ext_resource type="Script" path="res://Scripts/vision_area.gd" id="1_jrejg"]
+
+[node name="VisionArea" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_jrejg")

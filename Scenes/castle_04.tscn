@@ -1,0 +1,205 @@
+[gd_scene load_steps=18 format=4 uid="uid://dmnpn5bk2hio7"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_mbgt5"]
+[ext_resource type="AudioStream" uid="uid://dseokghg8jly0" path="res://Resources/Sounds/Goblins_Den_(Regular).wav" id="2_fpchx"]
+[ext_resource type="TileSet" uid="uid://fyvg60bdsib1" path="res://TileSets/tileset.tres" id="3_gei8h"]
+[ext_resource type="Script" path="res://Scripts/level_tile_map.gd" id="4_t74qe"]
+[ext_resource type="PackedScene" uid="uid://2qtrevekgf1s" path="res://Scenes/player_boy_spawn.tscn" id="5_uplnt"]
+[ext_resource type="PackedScene" uid="uid://4drxtr7s3djb" path="res://Scenes/level_transition.tscn" id="6_k0ewn"]
+[ext_resource type="PackedScene" uid="uid://40qnfr8ynu6u" path="res://Scenes/spikes.tscn" id="7_8n536"]
+[ext_resource type="PackedScene" uid="uid://ccoq268mvbkl2" path="res://Scenes/pressure_plate.tscn" id="8_po4hk"]
+[ext_resource type="Script" path="res://Scripts/puzzle_04.gd" id="9_v7q0k"]
+[ext_resource type="Resource" uid="uid://cehqmn45mcm86" path="res://Resources/key_dungeon.tres" id="10_0dkuq"]
+[ext_resource type="PackedScene" uid="uid://2y2u8lqydsby" path="res://Scenes/chest_dropper.tscn" id="10_qdby5"]
+[ext_resource type="PackedScene" uid="uid://eqldalh658ms" path="res://Scenes/locked_door.tscn" id="11_6fux8"]
+[ext_resource type="AudioStream" uid="uid://dlffhyulkcuhb" path="res://Resources/Sounds/02_chest_close_2.wav" id="12_e0pjb"]
+[ext_resource type="AudioStream" uid="uid://msco8k8aqqhq" path="res://Resources/Sounds/01_chest_open_3.wav" id="13_ogbuq"]
+[ext_resource type="PackedScene" uid="uid://bqudavxgfqooj" path="res://Scenes/PersistentDataHelper/PersistentDataHelper.tscn" id="14_sfnlu"]
+[ext_resource type="PackedScene" uid="uid://cqag1wijhivk" path="res://Scenes/torch_hidden.tscn" id="16_eg42n"]
+[ext_resource type="PackedScene" uid="uid://bsrs5pghdyja3" path="res://Scenes/torch.tscn" id="17_um287"]
+
+[node name="castle_04" type="Node2D"]
+script = ExtResource("1_mbgt5")
+music = ExtResource("2_fpchx")
+
+[node name="TileLayers" type="Node2D" parent="."]
+
+[node name="GroundTileLayers" type="TileMapLayer" parent="TileLayers"]
+tile_map_data = PackedByteArray("AAARAAwABAADAAwAAAARAAsABAAJAAwAAAARAAoABAAJAAwAAAARAAkABAAJAAwAAAARAAgABAAJAAwAAAARAAcABAAJAAwAAAARAAYABAAJAAwAAAARAAUABAAJAAwAAAARAAQABAAJAAwAAAARAAMABAAJAAwAAAARAAIABAACAAsAAAARAAEABAABAAIAAAARAAAABAABAAAAAAAQAAwABAADAAwAAAAQAAsABAAJAAwAAAAQAAoABAAJAAwAAAAQAAkABAAJAAwAAAAQAAgABAAJAAwAAAAQAAcABAAJAAwAAAAQAAYABAAJAAwAAAAQAAUABAAJAAwAAAAQAAQABAAJAAwAAAAQAAMABAAJAAwAAAAQAAIABAACAAsAAAAQAAEABAABAAIAAAAQAAAABAABAAAAAAAPAAwABAADAAwAAAAPAAsABAAJAAwAAAAPAAoABAAJAAwAAAAPAAkABAAJAAwAAAAPAAgABAAJAAwAAAAPAAcABAAJAAwAAAAPAAYABAAJAAwAAAAPAAUABAAJAAwAAAAPAAQABAAJAAwAAAAPAAMABAAJAAwAAAAPAAIABAACAAsAAAAPAAEABAABAAIAAAAPAAAABAABAAAAAAAOAAwABAADAAwAAAAOAAsABAAJAAwAAAAOAAoABAAJAAwAAAAOAAkABAAJAAwAAAAOAAgABAAJAAwAAAAOAAcABAAJAAwAAAAOAAYABAAJAAwAAAAOAAUABAAJAAwAAAAOAAMABAAJAAwAAAAOAAIABAACAAsAAAAOAAEABAABAAIAAAAOAAAABAABAAAAAAANAAwABAADAAwAAAANAAsABAAJAAwAAAANAAoABAAJAAwAAAANAAkABAAJAAwAAAANAAgABAAJAAwAAAANAAcABAAJAAwAAAANAAYABAAJAAwAAAANAAUABAAJAAwAAAANAAMABAAJAAwAAAANAAIABAACAAsAAAANAAEABAAIAAEAAAANAAAABAAIAAAAAAAMAAwABAADAAwAAAAMAAsABAAJAAwAAAAMAAoABAAJAAwAAAAMAAkABAAJAAwAAAAMAAgABAAJAAwAAAAMAAcABAAJAAwAAAAMAAYABAAJAAwAAAAMAAUABAAJAAwAAAAMAAIABAACAAsAAAAMAAEABAAHAAEAAAAMAAAABAAHAAAAAAALAAwABAADAAwAAAALAAsABAAJAAwAAAALAAoABAAJAAwAAAALAAkABAAJAAwAAAALAAgABAAJAAwAAAALAAcABAAJAAwAAAALAAYABAAJAAwAAAALAAUABAAJAAwAAAALAAQABAAJAAwAAAALAAMABAAJAAwAAAALAAIABAACAAsAAAALAAEABAAGAAEAAAALAAAABAAGAAAAAAAKAAwABAADAAwAAAAKAAsABAAJAAwAAAAKAAoABAAJAAwAAAAKAAkABAAFAAwAAAAKAAgABAACAAwAAAAKAAcABAAFAAsAAAAKAAYABAAJAAwAAAAKAAUABAAJAAwAAAAKAAQABAAJAAwAAAAKAAMABAAJAAwAAAAKAAIABAACAAsAAAAKAAEABAABAAIAAAAKAAAABAABAAAAAAAJAAwABAADAAwAAAAJAAsABAAJAAwAAAAJAAoABAAJAAwAAAAJAAkABAACAAsAAAAJAAgABAAJAAwAAAAJAAYABAAJAAwAAAAJAAUABAAJAAwAAAAJAAQABAAJAAwAAAAJAAMABAAJAAwAAAAJAAIABAACAAsAAAAJAAEABAABAAIAAAAJAAAABAABAAAAAAAIAAwABAADAAwAAAAIAAsABAAJAAwAAAAIAAoABAAJAAwAAAAIAAkABAAEAAwAAAAIAAgABAADAAsAAAAIAAcABAAEAAsAAAAIAAYABAAJAAwAAAAIAAUABAAJAAwAAAAIAAQABAAJAAwAAAAIAAMABAAJAAwAAAAIAAIABAACAAsAAAAIAAEABAABAAIAAAAIAAAABAABAAAAAAAHAAwABAADAAwAAAAHAAsABAAJAAwAAAAHAAoABAAJAAwAAAAHAAkABAAJAAwAAAAHAAgABAAJAAwAAAAHAAcABAAJAAwAAAAHAAYABAAJAAwAAAAHAAUABAAJAAwAAAAHAAQABAAJAAwAAAAHAAMABAAJAAwAAAAHAAIABAACAAsAAAAHAAEABAABAAIAAAAHAAAABAABAAAAAAAGAAwABAADAAwAAAAGAAsABAAJAAwAAAAGAAoABAAJAAwAAAAGAAkABAAJAAwAAAAGAAgABAAJAAwAAAAGAAcABAAJAAwAAAAGAAYABAAJAAwAAAAGAAUABAAJAAwAAAAGAAQABAAJAAwAAAAGAAMABAAJAAwAAAAGAAIABAACAAsAAAAGAAEABAABAAIAAAAGAAAABAABAAAAAAAFAAwABAADAAwAAAAFAAsABAAJAAwAAAAFAAoABAAJAAwAAAAFAAkABAAJAAwAAAAFAAgABAAJAAwAAAAFAAcABAAJAAwAAAAFAAYABAAJAAwAAAAFAAUABAAJAAwAAAAFAAQABAAJAAwAAAAFAAMABAAJAAwAAAAFAAIABAACAAsAAAAFAAEABAABAAIAAAAFAAAABAABAAAAAAAEAAwABAADAAwAAAAEAAsABAAJAAwAAAAEAAoABAAJAAwAAAAEAAkABAAJAAwAAAAEAAgABAAJAAwAAAAEAAcABAAJAAwAAAAEAAYABAAJAAwAAAAEAAUABAAJAAwAAAAEAAQABAAJAAwAAAAEAAMABAAJAAwAAAAEAAIABAACAAsAAAAEAAEABAABAAIAAAAEAAAABAABAAAAAAADAAwABAADAAwAAAADAAsABAAJAAwAAAADAAoABAAJAAwAAAADAAkABAAJAAwAAAADAAgABAAJAAwAAAADAAcABAAJAAwAAAADAAYABAAJAAwAAAADAAUABAAJAAwAAAADAAQABAAJAAwAAAADAAMABAAJAAwAAAADAAIABAACAAsAAAADAAEABAABAAIAAAADAAAABAABAAAAAAACAAwABAADAAwAAAACAAsABAAJAAwAAAACAAoABAAJAAwAAAACAAkABAAJAAwAAAACAAgABAAJAAwAAAACAAcABAAJAAwAAAACAAYABAAJAAwAAAACAAUABAAJAAwAAAACAAQABAAJAAwAAAACAAMABAAJAAwAAAACAAIABAACAAsAAAACAAEABAABAAIAAAACAAAABAABAAAAAAABAAwABAAAAAwAAAABAAsABAACAAwAAAABAAoABAACAAwAAAABAAkABAACAAwAAAABAAgABAACAAwAAAABAAcABAACAAwAAAABAAYABAACAAwAAAABAAUABAACAAwAAAABAAQABAACAAwAAAABAAMABAACAAwAAAABAAIABAAAAAsAAAABAAEABAABAAIAAAABAAAABAABAAAAAAAAAAwABAAAAAgAAAAAAAsABAAAAAgAAAAAAAoABAAAAAgAAAAAAAkABAAAAAgAAAAAAAgABAAAAAgAAAAAAAcABAAAAAgAAAAAAAYABAAAAAgAAAAAAAUABAAAAAgAAAAAAAQABAAAAAgAAAAAAAMABAAAAAgAAAAAAAIABAAAAAkAAAAAAAEABAAAAAIAAAAAAAAABAAAAAAAAAAXAAwABAABAAwAAAAXAAsABAADAAsAAAAXAAoABAADAAsAAAAXAAkABAADAAsAAAAXAAgABAADAAsAAAAXAAcABAADAAsAAAAXAAYABAADAAsAAAAXAAUABAADAAsAAAAXAAQABAADAAsAAAAXAAMABAADAAsAAAAXAAIABAABAAsAAAAXAAEABAABAAIAAAAXAAAABAABAAAAAAAWAAsABAAJAAwAAAAWAAoABAAJAAwAAAAWAAkABAAJAAwAAAAWAAcABAAJAAwAAAAWAAYABAAJAAwAAAAWAAUABAAJAAwAAAAWAAQABAAJAAwAAAAWAAMABAAJAAwAAAAWAAIABAACAAsAAAAWAAEABAABAAIAAAAWAAAABAABAAAAAAAVAAwABAADAAwAAAAVAAsABAAJAAwAAAAVAAoABAAJAAwAAAAVAAkABAAJAAwAAAAVAAgABAAJAAwAAAAVAAcABAAJAAwAAAAVAAYABAAJAAwAAAAVAAUABAAJAAwAAAAVAAQABAAJAAwAAAAVAAMABAAJAAwAAAAVAAIABAACAAsAAAAVAAEABAABAAIAAAAVAAAABAABAAAAAAAUAAwABAADAAwAAAAUAAsABAAJAAwAAAAUAAcABAAJAAwAAAAUAAYABAAJAAwAAAAUAAUABAAJAAwAAAAUAAQABAAJAAwAAAAUAAMABAAJAAwAAAAUAAIABAACAAsAAAAUAAEABAABAAIAAAAUAAAABAABAAAAAAATAAwABAADAAwAAAATAAsABAAJAAwAAAATAAoABAAJAAwAAAATAAkABAAJAAwAAAATAAgABAAJAAwAAAATAAcABAAJAAwAAAATAAYABAAJAAwAAAATAAUABAAJAAwAAAATAAQABAAJAAwAAAATAAMABAAJAAwAAAATAAIABAACAAsAAAATAAEABAABAAIAAAATAAAABAABAAAAAAASAAwABAADAAwAAAASAAsABAAJAAwAAAASAAoABAAJAAwAAAASAAkABAAJAAwAAAASAAgABAAJAAwAAAASAAcABAAJAAwAAAASAAYABAAJAAwAAAASAAUABAAJAAwAAAASAAQABAAJAAwAAAASAAMABAAJAAwAAAASAAIABAACAAsAAAASAAEABAABAAIAAAASAAAABAABAAAAAAAXAA0ABAABAAoAAAAVAA0ABAABAAoAAAAUAA0ABAABAAoAAAATAA0ABAABAAoAAAASAA0ABAABAAoAAAARAA0ABAABAAoAAAAQAA0ABAABAAoAAAAPAA0ABAABAAoAAAAOAA0ABAABAAoAAAANAA0ABAABAAoAAAAMAA0ABAABAAoAAQALAA0ABAABAAoAAAAKAA0ABAABAAoAAAAJAA0ABAABAAoAAAAIAA0ABAABAAoAAAAHAA0ABAABAAoAAAAGAA0ABAABAAoAAAAFAA0ABAABAAoAAAAEAA0ABAABAAoAAAADAA0ABAABAAoAAAACAA0ABAABAAoAAAABAA0ABAABAAoAAAAAAA0ABAAAAAoAAAAUAAgABAAJAAwAAAAUAAkABAAJAAwAAAAUAAoABAAJAAwAAAAWAAwABAADAAwAAAAWAA0ABAABAAoAAAAYAAAABAAFAAAAAAAYAAEABAAFAAIAAAAYAAIABAAFAAkAAAAYAAMABAAFAAkAAAAYAAQABAAFAAkAAAAYAAUABAAFAAkAAAAYAAYABAAFAAkAAAAYAAcABAAFAAkAAAAYAAgABAAFAAkAAAAYAAkABAAFAAkAAAAYAAwABAAFAAkAAAAYAAoABAAFAAkAAAAYAAsABAAFAAkAAAAYAA0ABAAFAAoAAAAWAAgABAAJAAwAAAAOAAQABAAJAAwAAAANAAQABAAJAAwAAAAMAAQABAAJAAwAAAAMAAMABAAJAAwAAAAJAAcABAADAAwAAAA=")
+tile_set = ExtResource("3_gei8h")
+script = ExtResource("4_t74qe")
+
+[node name="DecorationTileMapeLayers" type="TileMapLayer" parent="TileLayers"]
+tile_map_data = PackedByteArray("AAANAA0ABAAEAAoAAAALAA0ABAAEAAoAAAALAAMABAAJAAcAAAAKAAMABAAJAAcAAAAIAAMABAAJAAcAAAAHAAMABAAJAAcAAAAGAAMABAAJAAcAAAAFAAMABAAJAAcAAAAEAAMABAAJAAcAAAAEAAQABAAJAAcAAAAGAAUABAAJAAcAAAAHAAUABAAJAAcAAAAIAAUABAAJAAcAAAAIAAYABAAJAAcAAAAKAAUABAAJAAcAAAAKAAYABAAJAAcAAAAIAAcABAAJAAcAAAAIAAgABAAJAAcAAAAIAAkABAAJAAcAAAAJAAkABAAJAAcAAAAKAAkABAAJAAcAAAAKAAgABAAJAAcAAAAKAAcABAAJAAcAAAAEAAUABAAJAAcAAAAEAAYABAAJAAcAAAAEAAcABAAJAAcAAAAGAAYABAAJAAcAAAAGAAcABAAJAAcAAAAGAAgABAAJAAcAAAAGAAkABAAJAAcAAAAHAAkABAAJAAcAAAAEAAgABAAJAAcAAAAEAAkABAAJAAcAAAAEAAsABAAJAAcAAAAFAAsABAAJAAcAAAAGAAsABAAJAAcAAAAHAAsABAAJAAcAAAAIAAsABAAJAAcAAAAJAAsABAAJAAcAAAAKAAsABAAJAAcAAAALAAsABAAJAAcAAAANAAoABAAJAAcAAAANAAsABAAJAAcAAAANAAkABAAJAAcAAAAMAAkABAAJAAcAAAALAAkABAAJAAcAAAALAAwABAAJAAcAAAANAAwABAAJAAcAAAALAAUABAAJAAcAAAAMAAUABAAJAAcAAAANAAUABAAJAAcAAAAOAAUABAAJAAcAAAAPAAUABAAJAAcAAAARAAUABAAJAAcAAAAQAAUABAAJAAcAAAASAAUABAAJAAcAAAATAAUABAAJAAcAAAATAAYABAAJAAcAAAAUAAcABAAJAAcAAAAVAAcABAAJAAcAAAAWAAcABAAJAAcAAAAXAAYABAAJAAcAAAAXAAUABAAJAAcAAAAXAAQABAAJAAcAAAAXAAMABAAJAAcAAAAXAAIABAAJAAcAAAAWAAEABAAJAAcAAAAVAAEABAAJAAcAAAAUAAEABAAJAAcAAAATAAIABAAJAAcAAAATAAMABAAJAAcAAAASAAMABAAJAAcAAAAPAAMABAAJAAcAAAARAAMABAAJAAcAAAAQAAMABAAJAAcAAAAOAAMABAAJAAcAAAANAAMABAAJAAcAAAALAAIABAAJAAcAAAANAAIABAAJAAcAAAADAAoABAAJAAcAAAAJAAIABAAJAAcAAAA=")
+tile_set = ExtResource("3_gei8h")
+
+[node name="PlayerBoySpawn" parent="." instance=ExtResource("5_uplnt")]
+position = Vector2(199, 205)
+
+[node name="LevelTransition_05" parent="." instance=ExtResource("6_k0ewn")]
+position = Vector2(200, 25)
+level = "res://Scenes/castle_05.tscn"
+target_transition_area = "LevelTransition_05"
+size = 1
+side = 2
+
+[node name="LevelTransition_04" parent="." instance=ExtResource("6_k0ewn")]
+position = Vector2(200, 215)
+level = "res://Scenes/castle_02.tscn"
+target_transition_area = "LevelTransition_04"
+size = 1
+side = 3
+
+[node name="ChestDropper" parent="." instance=ExtResource("10_qdby5")]
+position = Vector2(344.632, 71.8938)
+item = ExtResource("10_0dkuq")
+
+[node name="Puzzle_04" type="Node2D" parent="."]
+script = ExtResource("9_v7q0k")
+
+[node name="PressurePlate" parent="Puzzle_04" instance=ExtResource("8_po4hk")]
+position = Vector2(152.5, 129)
+
+[node name="LockedDoor" parent="Puzzle_04" instance=ExtResource("11_6fux8")]
+position = Vector2(174.561, 25)
+key_item = ExtResource("10_0dkuq")
+locked_audio = ExtResource("12_e0pjb")
+open_audio = ExtResource("13_ogbuq")
+
+[node name="PersistentDataHelper" parent="Puzzle_04" instance=ExtResource("14_sfnlu")]
+
+[node name="Spikes" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(192, 160)
+
+[node name="Spikes2" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(176, 160)
+
+[node name="Spikes3" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(160, 160)
+
+[node name="Spikes4" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(144, 160)
+
+[node name="Spikes5" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(128, 160)
+
+[node name="Spikes6" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(112, 160)
+
+[node name="Spikes7" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(96, 160)
+
+[node name="Spikes8" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 160)
+
+[node name="Spikes9" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 144)
+
+[node name="Spikes10" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 128)
+
+[node name="Spikes11" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 112)
+
+[node name="Spikes12" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 96)
+
+[node name="Spikes13" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 80)
+
+[node name="Spikes14" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(144, 96)
+
+[node name="Spikes15" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(144, 80)
+
+[node name="Spikes16" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(144, 64)
+
+[node name="Spikes17" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(128, 64)
+
+[node name="Spikes18" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(112, 64)
+
+[node name="Spikes19" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(96, 64)
+
+[node name="Spikes20" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 64)
+
+[node name="Spikes21" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(144, 64)
+
+[node name="Spikes22" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(128, 64)
+
+[node name="Spikes23" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(112, 64)
+
+[node name="Spikes24" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(96, 64)
+
+[node name="Spikes25" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(80, 64)
+
+[node name="Spikes26" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(144, 64)
+
+[node name="Spikes27" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(160, 64)
+
+[node name="Spikes28" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(112, 64)
+
+[node name="Spikes29" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(144, 64)
+
+[node name="Spikes30" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(176, 64)
+
+[node name="Spikes31" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(192, 64)
+
+[node name="Spikes32" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(192, 48)
+
+[node name="Spikes33" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(240, 64)
+
+[node name="Spikes34" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(208, 64)
+
+[node name="Spikes35" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(272, 64)
+
+[node name="Spikes36" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(224, 64)
+
+[node name="Spikes37" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(256, 64)
+
+[node name="Spikes38" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(288, 64)
+
+[node name="Spikes39" parent="." instance=ExtResource("7_8n536")]
+position = Vector2(304, 64)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(0.533333, 0.45098, 0.435294, 1)
+energy = 0.99
+blend_mode = 2
+
+[node name="TorchHidden" parent="." instance=ExtResource("16_eg42n")]
+position = Vector2(8, 215)
+
+[node name="TorchHidden2" parent="." instance=ExtResource("16_eg42n")]
+position = Vector2(393, 216)
+
+[node name="Torch" parent="." instance=ExtResource("17_um287")]
+position = Vector2(8.38152, 14.6473)
+
+[node name="Torch2" parent="." instance=ExtResource("17_um287")]
+position = Vector2(391.382, 14.6473)
+
+[connection signal="activated" from="Puzzle_04/PressurePlate" to="ChestDropper" method="drop_chest"]

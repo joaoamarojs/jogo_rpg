@@ -1,0 +1,207 @@
+[gd_scene load_steps=27 format=3 uid="uid://cnjb8ufrqpd0b"]
+
+[ext_resource type="Script" path="res://Scripts/teleporter.gd" id="1_4knd3"]
+[ext_resource type="Texture2D" uid="uid://ci020mnr7ocvc" path="res://Assets/sprites/objects/objects_02.png" id="1_u4xi8"]
+[ext_resource type="PackedScene" uid="uid://dkkklkdi505se" path="res://Scenes/dialog_interaction.tscn" id="2_ji8fu"]
+[ext_resource type="Script" path="res://Scripts/dialog_text.gd" id="3_fpaij"]
+[ext_resource type="Script" path="res://Scripts/npc_resource.gd" id="4_dlf5v"]
+[ext_resource type="PackedScene" uid="uid://c041sb462wu22" path="res://Resources/HitBox/hit_box.tscn" id="6_8pbg2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur5oy"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(417, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08f1g"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(481, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx277"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(417, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rpov"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(449, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4smul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur5oy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08f1g")
+}],
+"loop": true,
+"name": &"iluminated",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx277")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rpov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx277")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rpov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fx277")
+}],
+"loop": false,
+"name": &"iluminating",
+"speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oin13"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(481, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_328xm"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(257, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wk525"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(289, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydk82"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(321, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd3t2"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(353, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gpvec"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(385, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4wdq"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(417, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxvk4"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(449, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycqur"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(481, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yrd7"]
+atlas = ExtResource("1_u4xi8")
+region = Rect2(449, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b51kv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oin13")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_328xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wk525")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydk82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd3t2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gpvec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4wdq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxvk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycqur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yrd7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngdp0"]
+size = Vector2(23, 26)
+
+[sub_resource type="Resource" id="Resource_6y4be"]
+script = ExtResource("4_dlf5v")
+npc_name = " "
+dialog_audio_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_ekrvf"]
+script = ExtResource("4_dlf5v")
+npc_name = " "
+dialog_audio_pitch = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jfmu"]
+size = Vector2(22, 20)
+
+[node name="Teleporter" type="StaticBody2D"]
+process_mode = 3
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_4knd3")
+
+[node name="AnimatedSpriteBase" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_4smul")
+animation = &"iluminating"
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[node name="AnimatedSpriteEffect" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -5)
+sprite_frames = SubResource("SpriteFrames_b51kv")
+frame = 9
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4.00543e-05, 0.499975)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_ngdp0")
+
+[node name="DialogInteraction" parent="." instance=ExtResource("2_ji8fu")]
+position = Vector2(0, 6)
+scale = Vector2(0.8, 0.8)
+
+[node name="DialogText" type="Node" parent="DialogInteraction"]
+script = ExtResource("3_fpaij")
+text = "Somente aquele que possuir a espada sagrada, será digno de prosseguir por esse caminho."
+npc_info = SubResource("Resource_6y4be")
+
+[node name="DialogText2" type="Node" parent="DialogInteraction"]
+script = ExtResource("3_fpaij")
+text = "A entrada só se abrirá perante ao [color=red]golpe[/color] de sua [color=red]lamina[/color]."
+npc_info = SubResource("Resource_ekrvf")
+
+[node name="HitBox" parent="." instance=ExtResource("6_8pbg2")]
+position = Vector2(1, 0)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_3jfmu")
+debug_color = Color(0.992822, 0, 0.246593, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

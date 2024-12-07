@@ -1,0 +1,108 @@
+[gd_scene load_steps=9 format=3 uid="uid://ds1yevy6x75pb"]
+
+[ext_resource type="Script" path="res://Scripts/dialog_system.gd" id="1_76pqr"]
+[ext_resource type="Texture2D" uid="uid://crawcjkiemptc" path="res://Assets/sprites/UI/font.png" id="2_o3tyy"]
+[ext_resource type="FontFile" uid="uid://cw7i6h4on5bdd" path="res://Assets/retganon.ttf" id="3_qhdyg"]
+[ext_resource type="FontFile" uid="uid://nwbhh1x2348v" path="res://Assets/zeldadxt.ttf" id="4_m7v6c"]
+
+[sub_resource type="Gradient" id="Gradient_6bqay"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ijf6"]
+gradient = SubResource("Gradient_6bqay")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wn3mo"]
+content_margin_left = 28.0
+content_margin_top = 20.0
+content_margin_right = 28.0
+content_margin_bottom = 20.0
+texture = ExtResource("2_o3tyy")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lul0c"]
+bg_color = Color(0, 0.670101, 0.790714, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="DialogSystem" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_76pqr")
+
+[node name="DialogUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DialogUI"]
+modulate = Color(0.0605303, 0.0605304, 0.0605303, 0.780392)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -450.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_8ijf6")
+
+[node name="PanelContainer" type="PanelContainer" parent="DialogUI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -223.0
+offset_right = 400.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wn3mo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_m7v6c")
+theme_override_font_sizes/normal_font_size = 38
+bbcode_enabled = true
+text = "Example Text
+"
+scroll_active = false
+
+[node name="NameLabel" type="Label" parent="DialogUI"]
+layout_mode = 0
+offset_left = 205.0
+offset_top = 411.0
+offset_right = 271.0
+offset_bottom = 449.0
+theme_override_fonts/font = ExtResource("3_qhdyg")
+theme_override_font_sizes/font_size = 42
+text = "NOME"
+
+[node name="Timer" type="Timer" parent="DialogUI"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogUI"]
+
+[node name="DialogProgressIndicator" type="PanelContainer" parent="DialogUI"]
+layout_mode = 0
+offset_left = 929.0
+offset_top = 628.0
+offset_right = 1013.0
+offset_bottom = 662.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lul0c")
+
+[node name="Label" type="Label" parent="DialogUI/DialogProgressIndicator"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Proximo"

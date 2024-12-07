@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://btwtgrpt0h3ji"]
+
+[ext_resource type="Texture2D" uid="uid://71fkybknw15n" path="res://Assets/sprites/objects/ball_place.png" id="1_2m5qw"]
+[ext_resource type="Script" path="res://Scripts/ball_place.gd" id="1_wdbqn"]
+[ext_resource type="Texture2D" uid="uid://ci020mnr7ocvc" path="res://Assets/sprites/objects/objects_02.png" id="3_8n7xe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rkct6"]
+size = Vector2(10, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8fd7"]
+size = Vector2(12, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_586tn"]
+atlas = ExtResource("3_8n7xe")
+region = Rect2(31, 127, 16, 16)
+
+[node name="BallPlace" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_wdbqn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_rkct6")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 2)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_n8fd7")
+debug_color = Color(0.834075, 0.389526, 7.70092e-07, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -10)
+texture = ExtResource("1_2m5qw")
+hframes = 2
+vframes = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0.5, -19)
+texture = SubResource("AtlasTexture_586tn")

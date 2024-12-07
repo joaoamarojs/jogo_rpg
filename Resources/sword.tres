@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=7 format=3 uid="uid://ctsm4pcu0q4jr"]
+
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="1_p3g87"]
+[ext_resource type="Script" path="res://Scripts/item_effect.gd" id="1_ybipe"]
+[ext_resource type="Script" path="res://Scripts/item_effect_got_sword.gd" id="2_ouwvg"]
+[ext_resource type="AudioStream" uid="uid://derhqt7wrfj4f" path="res://Resources/Sounds/29_got_weapon_1.wav" id="3_mnxxq"]
+[ext_resource type="Texture2D" uid="uid://c1vs31fd8kt8" path="res://Assets/sprites/objects/sword.png" id="5_0hetu"]
+
+[sub_resource type="Resource" id="Resource_njrgj"]
+script = ExtResource("2_ouwvg")
+damage = 1
+use_description = ""
+
+[resource]
+script = ExtResource("1_p3g87")
+name = "Espada"
+side_texture = ExtResource("5_0hetu")
+description = "Contemple a Poderosa Espada de Ferro!
+É a espada mais poderosa de todas!
+
+
+E a unica que tem no jogo... "
+pickup_sound = ExtResource("3_mnxxq")
+use_on_pickup = true
+effects = Array[ExtResource("1_ybipe")]([SubResource("Resource_njrgj")])

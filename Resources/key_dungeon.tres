@@ -1,0 +1,82 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=18 format=3 uid="uid://cehqmn45mcm86"]
+
+[ext_resource type="Texture2D" uid="uid://cogj33i3avoyr" path="res://Assets/sprites/objects/key_item_anim_strip_6.png" id="1_e6w42"]
+[ext_resource type="Script" path="res://Scripts/item_effect.gd" id="1_owxhf"]
+[ext_resource type="Texture2D" uid="uid://bav7212h1w62b" path="res://Assets/sprites/objects/key_dungeon.png" id="1_umpb7"]
+[ext_resource type="Script" path="res://Scripts/inventory_item.gd" id="2_s6w0c"]
+[ext_resource type="Script" path="res://Scripts/item_effect_dialog.gd" id="3_nb7lx"]
+[ext_resource type="Shape2D" uid="uid://fxycf315w00d" path="res://Resources/heart_collision_shape.tres" id="3_ni8ow"]
+[ext_resource type="Script" path="res://Scripts/npc_resource.gd" id="3_uyxc1"]
+[ext_resource type="AudioStream" uid="uid://derhqt7wrfj4f" path="res://Resources/Sounds/29_got_weapon_1.wav" id="4_gkxkh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ehco"]
+atlas = ExtResource("1_e6w42")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cjs0"]
+atlas = ExtResource("1_e6w42")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kbff"]
+atlas = ExtResource("1_e6w42")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_voxjr"]
+atlas = ExtResource("1_e6w42")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7it7"]
+atlas = ExtResource("1_e6w42")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks7iy"]
+atlas = ExtResource("1_e6w42")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b5783"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ehco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cjs0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kbff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_voxjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7it7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks7iy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Resource" id="Resource_ynfnq"]
+script = ExtResource("3_uyxc1")
+npc_name = " "
+dialog_audio_pitch = 1.0
+
+[sub_resource type="Resource" id="Resource_g7jik"]
+script = ExtResource("3_nb7lx")
+npc_info = SubResource("Resource_ynfnq")
+dialog_texts = Array[String](["Esse item não pode ser usado aqui!"])
+use_description = ""
+
+[resource]
+script = ExtResource("2_s6w0c")
+ground_collision_shape = ExtResource("3_ni8ow")
+name = "Chave"
+animation = SubResource("SpriteFrames_b5783")
+side_texture = ExtResource("1_umpb7")
+description = "Uma chave! Pode ser usada para abrir portas."
+pickup_sound = ExtResource("4_gkxkh")
+use_on_pickup = false
+effects = Array[ExtResource("1_owxhf")]([SubResource("Resource_g7jik")])

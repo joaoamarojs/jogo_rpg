@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://d6i8vio1dnfj"]
+
+[ext_resource type="Texture2D" uid="uid://jj4yxuf5o6qc" path="res://Assets/sprites/objects/fountain.png" id="1_tle1i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8aa18"]
+atlas = ExtResource("1_tle1i")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llr7k"]
+atlas = ExtResource("1_tle1i")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xudy3"]
+atlas = ExtResource("1_tle1i")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4smul"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8aa18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llr7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xudy3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rs7m0"]
+radius = 16.0
+height = 46.0
+
+[node name="Fountain" type="StaticBody2D"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, 1)
+sprite_frames = SubResource("SpriteFrames_4smul")
+autoplay = "default"
+frame_progress = 0.0131139
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_rs7m0")

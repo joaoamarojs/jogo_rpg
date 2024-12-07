@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://dkkklkdi505se"]
+
+[ext_resource type="Script" path="res://Scripts/dialog_interaction.gd" id="1_8s40k"]
+[ext_resource type="Texture2D" uid="uid://ci020mnr7ocvc" path="res://Assets/sprites/objects/objects_02.png" id="2_ygwra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r77ds"]
+size = Vector2(20, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qekob"]
+atlas = ExtResource("2_ygwra")
+region = Rect2(256, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0208"]
+atlas = ExtResource("2_ygwra")
+region = Rect2(48, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yx5hf"]
+atlas = ExtResource("2_ygwra")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1xv6"]
+atlas = ExtResource("2_ygwra")
+region = Rect2(32, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04viw"]
+atlas = ExtResource("2_ygwra")
+region = Rect2(48, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaeh3"]
+atlas = ExtResource("2_ygwra")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q4ymn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qekob")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0208")
+}],
+"loop": true,
+"name": &"near_player",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yx5hf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1xv6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04viw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaeh3")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 3.0
+}]
+
+[node name="DialogInteraction" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+script = ExtResource("1_8s40k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_r77ds")
+debug_color = Color(0.85617, 0.366532, 7.70092e-07, 0.42)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -22)
+sprite_frames = SubResource("SpriteFrames_q4ymn")
+autoplay = "default"
+frame_progress = 0.224555

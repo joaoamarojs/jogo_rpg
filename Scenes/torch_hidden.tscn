@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://cqag1wijhivk"]
+
+[ext_resource type="Texture2D" uid="uid://dypykfelgtxrw" path="res://Assets/sprites/objects/torch_prop_anim_strip_5.png" id="1_j6l0x"]
+[ext_resource type="Script" path="res://Scripts/torch.gd" id="2_e1bv2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfcyl"]
+atlas = ExtResource("1_j6l0x")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmtcl"]
+atlas = ExtResource("1_j6l0x")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mafa8"]
+atlas = ExtResource("1_j6l0x")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iaq5j"]
+atlas = ExtResource("1_j6l0x")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emuvf"]
+atlas = ExtResource("1_j6l0x")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gho14"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfcyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmtcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mafa8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iaq5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emuvf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_d1p4w"]
+offsets = PackedFloat32Array(0, 0.273504, 0.397436, 0.653846, 0.876068, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.964486, 0, 1, 1, 0.32813, 0.101698, 1, 1, 0.462303, 0, 1, 0.601563, 0.278104, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5am05"]
+gradient = SubResource("Gradient_d1p4w")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[node name="Torch" type="Node2D"]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_gho14")
+autoplay = "default"
+frame_progress = 0.330997
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -2)
+texture = SubResource("GradientTexture2D_5am05")
+script = ExtResource("2_e1bv2")

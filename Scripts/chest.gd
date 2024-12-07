@@ -39,6 +39,7 @@ func _on_area_exit( _a : Area2D ) -> void:
 	
 func player_interact() -> void:
 	if isOpened == false:
+		get_tree().paused = true
 		sprite_2d.visible = false
 		audio_player.stream = OPEN_CHEST
 		audio_player.play()

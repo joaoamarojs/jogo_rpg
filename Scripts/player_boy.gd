@@ -11,7 +11,7 @@ var direction : Vector2 = Vector2.ZERO
 var invulnerable : bool = false
 var hp : int = 12
 var max_hp : int = 12
-var has_sword : bool = true
+var has_sword : bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSpritePlayer
 @onready var hit_box : HitBox = $HitBox

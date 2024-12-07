@@ -14,6 +14,9 @@ signal picked_up
 @onready var is_pickedup = $PersistentDataHelper
 
 func _ready():
+	if is_pickedup == null:
+		is_pickedup = get_node("PersistentDataHelper")
+		
 	animated_sprite.frames = inventory_item.animation
 	collision_shape_2d.shape = inventory_item.ground_collision_shape
 	area_2d.body_entered.connect( _on_body_entered )

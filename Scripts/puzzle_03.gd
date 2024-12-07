@@ -13,10 +13,12 @@ var level : int = 1
 func _ready() -> void:
 	is_finished_data.data_loaded.connect( check_puzzle_state )
 	get_parent().child_exiting_tree.connect( _on_enemy_destroyed )
+	isFinished = is_finished_data.value
+	if !isFinished:
+		level = 1
 	check_puzzle_state()
 	
 func check_puzzle_state() -> void:
-	isFinished = is_finished_data.value
 	if not isFinished and level <= 3:
 		for child in get_parent().get_children():
 			if child is EnemyDropper:

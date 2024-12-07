@@ -31,6 +31,7 @@ func open_door() -> void:
 	var door_unlocked = PlayerManager.INVENTORY_DATA.use_item( key_item )
 	
 	if door_unlocked:
+		get_tree().paused = true
 		interact_sprite.visible = false
 		animated_sprite.play( "unlock" )
 		audio.stream = open_audio

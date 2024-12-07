@@ -29,7 +29,7 @@ position = Vector2(192, 206)
 
 [node name="LevelTransition" parent="." instance=ExtResource("5_omep2")]
 position = Vector2(192, 224)
-level = "res://Scenes/main.tscn"
+level = "res://Scenes/home_village.tscn"
 side = 3
 
 [node name="Teleporter" parent="." instance=ExtResource("6_0qqqv")]

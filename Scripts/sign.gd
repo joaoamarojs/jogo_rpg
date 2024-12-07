@@ -20,41 +20,52 @@ enum STYLE_OTHERS { MIDDLE, RIGHT, LEFT, DOUBLE_MIDDLE, DOUBLE_RIGHT, DOUBLE_LEF
 		style_others = _v
 		_change_style()
 
+@onready var collision_shape = $CollisionShape2D
 @onready var small = $small
 @onready var medium = $medium
 @onready var big_left = $big_left
 @onready var big_right = $big_right
-@onready var collision_shape = $CollisionShape2D
 
 func _ready() -> void:
 	_change_type()
 	_change_style()
 
 func _change_type() -> void:
+	if small == null:
+		small = get_node("small")
+		
+	if medium == null:
+		medium = get_node("medium")
+	
+	if big_left == null:
+		big_left = get_node("big_left")
+	
+	if big_right == null:
+		big_right = get_node("big_right")	
+		
+	if collision_shape == null:
+		collision_shape = get_node("CollisionShape2D")		
+		
 	if type == TYPE.SMALL:
-		collision_shape.shape.size.x = 16
-		collision_shape.shape.size.y = 4
+		collision_shape.shape.size = Vector2(16,4)
 		small.visible = true
 		medium.visible = false
 		big_left.visible = false
 		big_right.visible = false
 	elif type == TYPE.MEDIUM:
-		collision_shape.shape.size.x = 6
-		collision_shape.shape.size.y = 4
+		collision_shape.shape.size = Vector2(6,4)
 		small.visible = false
 		medium.visible = true
 		big_left.visible = false
 		big_right.visible = false
 	elif type == TYPE.BIG_LEFT:
-		collision_shape.shape.size.x = 6
-		collision_shape.shape.size.y = 4
+		collision_shape.shape.size = Vector2(6,4)
 		small.visible = false
 		medium.visible = false
 		big_left.visible = true
 		big_right.visible = false
 	elif type == TYPE.BIG_RIGHT:
-		collision_shape.shape.size.x = 6
-		collision_shape.shape.size.y = 4
+		collision_shape.shape.size = Vector2(6,4)
 		small.visible = false
 		medium.visible = false
 		big_left.visible = false

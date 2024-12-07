@@ -2,6 +2,8 @@ class_name State_Idle extends State
 
 @onready var walk : State = $"../Walk"
 @onready var sword_attack : State  = $"../Sword_Attack"
+@onready var horse = $"../Horse"
+
 const INACTIVE_TIME_THRESHOLD = 15.0
 var inactive_time = 0.0
 var isSleeping = false
@@ -48,4 +50,6 @@ func handle_input( _event: InputEvent ) -> State:
 			return sword_attack
 	if _event.is_action_pressed("interact"):
 		PlayerManager.interact()
+	if _event.is_action_pressed("horse"):
+		return horse
 	return null

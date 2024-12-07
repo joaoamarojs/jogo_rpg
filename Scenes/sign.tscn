@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://Scripts/sign.gd" id="1_est4v"]
 [ext_resource type="Texture2D" uid="uid://dwjmh25ousr8" path="res://Assets/sprites/objects/signs.png" id="2_odr6b"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdj11"]
+size = Vector2(16, 4)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2rj6"]
 atlas = ExtResource("2_odr6b")
 region = Rect2(48, 0, 48, 16)
@@ -19,23 +22,24 @@ region = Rect2(0, 145, 96, 191)
 atlas = ExtResource("2_odr6b")
 region = Rect2(0, 529, 96, 191)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdj11"]
-size = Vector2(6, 4)
-
 [node name="sign" type="StaticBody2D"]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_est4v")
 type = 1
-sign_frame = null
+style_small = null
+style_others = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fdj11")
 
 [node name="small" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -5)
 texture = SubResource("AtlasTexture_r2rj6")
 hframes = 3
 
 [node name="medium" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0, -13)
 texture = SubResource("AtlasTexture_d1aoc")
 hframes = 6
@@ -54,6 +58,3 @@ position = Vector2(7.5, -19)
 texture = SubResource("AtlasTexture_l3xwm")
 hframes = 3
 vframes = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_fdj11")

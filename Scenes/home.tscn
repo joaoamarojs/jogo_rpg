@@ -68,7 +68,7 @@ side = 2
 
 [node name="LevelTransitionHome" parent="." instance=ExtResource("6_1pklq")]
 position = Vector2(200, 240)
-level = "res://Scenes/main.tscn"
+level = "res://Scenes/home_village.tscn"
 target_transition_area = "LevelTransitionHome"
 size = 1
 side = 3

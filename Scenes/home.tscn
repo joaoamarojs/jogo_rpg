@@ -104,7 +104,12 @@ npc_info = SubResource("Resource_81vg0")
 script = ExtResource("9_wwyxw")
 text = "Vamos brincar de Esconde-Esconde mais tarde.
 
-Tá muito sol e eu quero descansar um pouco..."
+Preciso que você pegue lenha para o almoço"
+npc_info = SubResource("Resource_npfhu")
+
+[node name="DialogText5" type="Node" parent="NPCBrother/DialogInteraction"]
+script = ExtResource("9_wwyxw")
+text = "Se precisar de ajuda, peça para o nosso vizinho, ele tem um machado."
 npc_info = SubResource("Resource_npfhu")
 
 [node name="Vase" parent="." instance=ExtResource("11_da8qn")]

@@ -16,6 +16,9 @@ signal picked_up
 func _ready():
 	if is_pickedup == null:
 		is_pickedup = get_node("PersistentDataHelper")
+	
+	if animated_sprite == null:
+		animated_sprite = get_node("Area2D/AnimatedSprite2D")
 		
 	animated_sprite.frames = inventory_item.animation
 	collision_shape_2d.shape = inventory_item.ground_collision_shape

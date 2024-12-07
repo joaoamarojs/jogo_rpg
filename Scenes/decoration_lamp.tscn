@@ -29,20 +29,24 @@ script = ExtResource("1_luwur")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 position = Vector2(1, -12)
 texture = SubResource("AtlasTexture_5fme6")
 
 [node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(-12, -12)
 texture = SubResource("AtlasTexture_5wb3o")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 position = Vector2(0, -28)
 texture = SubResource("AtlasTexture_s3k6n")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 position = Vector2(12, -12)
 texture = SubResource("AtlasTexture_clll3")
 

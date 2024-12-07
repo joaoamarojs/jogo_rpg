@@ -23,18 +23,21 @@ collision_mask = 0
 script = ExtResource("1_dqlml")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
+texture_filter = 1
 position = Vector2(8, 1)
 tile_map_data = PackedByteArray("AAD9//z/AwAGAAAAAAD9//3/AwAGAAEAAAD9//7/AwAGAAIAAAD9////AwAGAAMAAAD9/wAAAwAGAAQAAAD+//z/AwAHAAAAAAD+//3/AwAHAAEAAAD+//7/AwAHAAIAAAD+////AwAHAAMAAAD+/wAAAwAHAAQAAAD///z/AwAIAAAAAAD///3/AwAIAAEAAAD///7/AwAIAAIAAAD/////AwAQAAQAAAD//wAAAwAQAAUAAAAAAPz/AwAJAAAAAAAAAP3/AwAJAAEAAAAAAP7/AwAJAAIAAAAAAP//AwAJAAMAAAAAAAAAAwAJAAQAAAABAPz/AwAKAAAAAAABAP3/AwAKAAEAAAABAP7/AwAKAAIAAAABAP//AwAKAAMAAAABAAAAAwAKAAQAAAA=")
 tile_set = ExtResource("1_upner")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 visible = false
+texture_filter = 1
 position = Vector2(8, 1)
 tile_map_data = PackedByteArray("AAD9//z/AwALAAAAAAD9//3/AwALAAEAAAD+//z/AwAMAAAAAAD+//3/AwAMAAEAAAA=")
 tile_set = ExtResource("1_upner")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 position = Vector2(-0.5, -1.5)
 texture = SubResource("AtlasTexture_bgsya")
 

@@ -19,6 +19,7 @@ lock_rotation = true
 script = ExtResource("1_m61qd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -3)
 texture = SubResource("AtlasTexture_r2fy7")
 

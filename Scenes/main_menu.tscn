@@ -46,6 +46,7 @@ button_press_audio = ExtResource("3_dhhf0")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -54,6 +55,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,10 +65,12 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.266667)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Control"]
+texture_filter = 1
 position = Vector2(595, 192)
 texture = ExtResource("1_yh1uc")
 
 [node name="ButtonNovo" type="Button" parent="CanvasLayer/Control"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 404.0
 offset_top = 327.0
@@ -81,6 +85,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_uacxf")
 text = "NOVO JOGO"
 
 [node name="ButtonContinuar" type="Button" parent="CanvasLayer/Control"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 404.0
 offset_top = 423.0

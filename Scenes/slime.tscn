@@ -403,6 +403,7 @@ script = ExtResource("1_unaw2")
 hp = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_b18oc")
 animation = &"up_hurt"

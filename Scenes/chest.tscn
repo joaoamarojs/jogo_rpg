@@ -220,6 +220,7 @@ libraries = {
 autoplay = "closed"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_o7w7f")
 animation = &"opening"
 frame = 3
@@ -227,6 +228,7 @@ frame_progress = 1.0
 
 [node name="ItemSprite" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 position = Vector2(0, -6)
 scale = Vector2(0.5, 0.5)
 
@@ -258,6 +260,7 @@ shape = SubResource("RectangleShape2D_50xy3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
+texture_filter = 1
 position = Vector2(0.5, -15)
 texture = SubResource("AtlasTexture_kle6g")
 

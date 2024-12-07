@@ -10,6 +10,7 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player_boy : PlayerBoy
 var invulnerable : bool = false
+var health : int = 100
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : NPCStateMachine = $NPCStateMachine

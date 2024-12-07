@@ -76,6 +76,7 @@ animations = [{
 script = ExtResource("1_7s4jt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -14)
 
 [node name="Label" type="Label" parent="Sprite2D"]
@@ -93,6 +94,7 @@ stream = ExtResource("2_hfuxq")
 [node name="PersistentDataHelper" parent="." instance=ExtResource("2_3bkna")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_de4sf")
 frame = 8
 frame_progress = 1.0

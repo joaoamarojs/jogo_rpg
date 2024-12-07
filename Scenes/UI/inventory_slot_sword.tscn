@@ -28,16 +28,19 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_8xnbx")
 script = ExtResource("1_8afac")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
 position = Vector2(33, 33)
 texture = ExtResource("2_0kyao")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_right = 66.0
 offset_bottom = 66.0
 stretch_mode = 3
 
 [node name="Label" type="Label" parent="."]
+texture_filter = 1
 layout_mode = 0
 offset_left = 9.0
 offset_top = 9.0

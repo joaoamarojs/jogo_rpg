@@ -11,6 +11,7 @@ script = ExtResource("1_aukng")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 y_sort_enabled = true
+texture_filter = 1
 position = Vector2(1, 8)
 texture = ExtResource("2_t46pe")
 hframes = 2

@@ -163,6 +163,7 @@ collision_mask = 0
 script = ExtResource("1_4knd3")
 
 [node name="AnimatedSpriteBase" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_4smul")
 animation = &"iluminating"
@@ -171,6 +172,7 @@ frame = 4
 frame_progress = 1.0
 
 [node name="AnimatedSpriteEffect" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(1, -5)
 sprite_frames = SubResource("SpriteFrames_b51kv")
 frame = 9

@@ -61,6 +61,7 @@ fill_to = Vector2(1, 0.5)
 [node name="Torch" type="Node2D"]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_gho14")
 autoplay = "default"

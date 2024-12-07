@@ -205,6 +205,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 824.0
 offset_top = 16.0
@@ -213,67 +214,88 @@ offset_bottom = 257.0
 alignment = 1
 
 [node name="Heart" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart2" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart3" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart4" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart5" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart6" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart7" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart8" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart9" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart10" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart11" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart12" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart13" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart14" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart15" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart16" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart17" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart18" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart19" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="Heart20" parent="Control/HFlowContainer" instance=ExtResource("1_343av")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="GameOver" type="Control" parent="Control"]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -297,9 +319,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -66.5
+offset_left = -101.0
 offset_top = -85.0
-offset_right = 87.5
+offset_right = 53.0
 offset_bottom = -55.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -314,9 +336,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -76.5
+offset_left = -108.5
 offset_top = -36.5
-offset_right = 92.5
+offset_right = 60.5
 offset_bottom = 62.5
 grow_horizontal = 2
 grow_vertical = 2

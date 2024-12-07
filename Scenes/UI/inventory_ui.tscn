@@ -91,6 +91,7 @@ grow_vertical = 2
 color = Color(0.165656, 0.165656, 0.165656, 0.780392)
 
 [node name="PanelContainer2" type="PanelContainer" parent="Control"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 243.0
 offset_top = 271.0
@@ -102,10 +103,12 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_u6p73")
 layout_mode = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/PanelContainer2/GridContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(66, 66)
 layout_mode = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/PanelContainer2/GridContainer/PanelContainer"]
+texture_filter = 1
 position = Vector2(31, 41)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_mr1fn")
@@ -115,6 +118,7 @@ autoplay = "default"
 layout_mode = 2
 
 [node name="PanelContainer3" type="PanelContainer" parent="Control"]
+texture_filter = 1
 layout_mode = 2
 offset_left = 411.0
 offset_top = 60.0
@@ -123,6 +127,7 @@ offset_bottom = 178.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_u6p73")
 
 [node name="Label" type="Label" parent="Control/PanelContainer3"]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
@@ -132,6 +137,7 @@ text = "INVENTARIO"
 horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 411.0
 offset_top = 271.0
@@ -146,33 +152,43 @@ script = ExtResource("3_3bc3x")
 data = ExtResource("4_dyvvw")
 
 [node name="InventorySlot" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot2" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot3" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot4" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot5" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot6" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot7" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot8" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot9" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="InventorySlot10" parent="Control/PanelContainer/GridContainer" instance=ExtResource("3_2piq2")]
+texture_filter = 1
 layout_mode = 2
 
 [node name="ItemDescription" type="Label" parent="Control"]

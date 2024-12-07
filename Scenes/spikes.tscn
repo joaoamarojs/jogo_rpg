@@ -123,6 +123,7 @@ size = Vector2(10, 11)
 script = ExtResource("1_catc0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_av6o0")
 animation = &"up"

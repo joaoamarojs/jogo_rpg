@@ -16,6 +16,7 @@ func init() -> void:
 
 ## What happens when the player enters this State?
 func enter() -> void:
+	player_boy.on_horse = true
 	player_boy.update_animation( "horse" )
 	walking = false
 	pass
@@ -23,6 +24,7 @@ func enter() -> void:
 
 ## What happens when the player exits this State?
 func exit() -> void:
+	player_boy.on_horse = false
 	pass
 
 

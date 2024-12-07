@@ -12,7 +12,9 @@ var invulnerable : bool = false
 var hp : int = 12
 var max_hp : int = 12
 var has_sword : bool = false
+var on_horse : bool = false
 
+@onready var animated_sprite_horse = $AnimatedSpriteHorse
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSpritePlayer
 @onready var hit_box : HitBox = $HitBox
 @onready var state_machine : PlayerStateMachine = $StateMachine
@@ -69,12 +71,20 @@ func set_direction() -> bool:
 	cardinal_direction = new_dir
 	direction_changed.emit( new_dir )
 	animated_sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	animated_sprite_horse.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	return true
 
 
 
 func update_animation( state : String ) -> void:
-	animated_sprite.play( anim_direction() + "_" +  state)
+	if on_horse:
+		animated_sprite_horse.visible = true
+		animated_sprite.visible = false
+		animated_sprite_horse.play(anim_direction() + "_" +  state)
+	else:
+		animated_sprite.visible = true
+		animated_sprite_horse.visible = false	
+		animated_sprite.play( anim_direction() + "_" +  state)
 	pass
 
 

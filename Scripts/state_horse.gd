@@ -1,6 +1,7 @@
 class_name State_Horse extends State
 
 @export var move_speed : float = 80.0
+var mount_area : Mount_Area
 
 var walking : bool = false
 
@@ -24,6 +25,7 @@ func enter() -> void:
 
 ## What happens when the player exits this State?
 func exit() -> void:
+	mount_area.unmount()
 	pass
 
 

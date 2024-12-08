@@ -22,6 +22,8 @@ var on_horse : bool = false
 @onready var lift: State_Lift = $StateMachine/Lift
 @onready var held_item: Node2D = $HeldItem
 @onready var carry: State_Carry = $StateMachine/Carry
+@onready var mount = $StateMachine/Mount
+@onready var horse = $StateMachine/Horse
 @onready var player_hurt_box: HurtBox = $Interactions/HurtBox
 @onready var interact_area = $Interactions/Interation
 
@@ -134,7 +136,10 @@ func pickup_item( _t : Throwable ) -> void:
 	carry.throwable = _t
 	pass
 
-
+func mount_horse( _h : Mount_Area ) -> void:
+	state_machine.change_state( mount )
+	horse.mount_area = _h
+	pass
 
 func revive_player() -> void:
 	update_hp( 99 )

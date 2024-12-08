@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://dw2nb0crm8u4u"]
+[gd_scene load_steps=89 format=3 uid="uid://dw2nb0crm8u4u"]
 
 [ext_resource type="Script" path="res://Scripts/npc_horse.gd" id="1_tbihm"]
 [ext_resource type="Texture2D" uid="uid://xpjn0hkaag02" path="res://Assets/sprites/characters/Horse_01.png" id="2_mapol"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://c041sb462wu22" path="res://Resources/HitBox/hit_box.tscn" id="7_ytnsr"]
 [ext_resource type="Script" path="res://Scripts/npc_interactions.gd" id="9_07log"]
 [ext_resource type="PackedScene" uid="uid://cpvl4rru3x52v" path="res://Resources/HurtBox/hurt_box.tscn" id="10_fb221"]
+[ext_resource type="Script" path="res://Scripts/mount_area.gd" id="10_vgu44"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mos2m"]
 atlas = ExtResource("2_mapol")
@@ -650,6 +651,9 @@ height = 4.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_srrq2"]
 radius = 5.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8icb"]
+size = Vector2(4, 20)
+
 [node name="NPCHorse" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 16
@@ -717,3 +721,13 @@ damage = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCInteractions/AttackHurtBox"]
 shape = SubResource("CircleShape2D_srrq2")
 debug_color = Color(0.978369, 0, 0.396737, 0.42)
+
+[node name="MountArea" type="Area2D" parent="NPCInteractions"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("10_vgu44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPCInteractions/MountArea"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_g8icb")
+debug_color = Color(0.7, 0.277519, 0, 0.42)

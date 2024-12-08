@@ -1,8 +1,8 @@
-class_name State_Lift extends State
+class_name State_Mount extends State
 
 @export var lift_audio : AudioStream
 
-@onready var carry : State = $"../Carry"
+@onready var horse : State = $"../Horse"
 
 
 
@@ -10,11 +10,10 @@ class_name State_Lift extends State
 
 ## What happens when the player enters this State?
 func enter() -> void:
-	
-	player_boy.update_animation( "lift" )
-	player_boy.animated_sprite.animation_finished.connect( state_complete )
-	await player_boy.animated_sprite.animation_finished
-	player_boy.held_item.visible = true
+	player_boy.on_horse = true
+	player_boy.update_animation( "mount" )
+	player_boy.animated_sprite_horse.animation_finished.connect( state_complete )
+	await player_boy.animated_sprite_horse.animation_finished
 	player_boy.audio.stream = lift_audio
 	player_boy.audio.play()
 	pass
@@ -43,6 +42,6 @@ func handle_input( _event: InputEvent ) -> State:
 
 
 func state_complete() -> void:
-	player_boy.animated_sprite.animation_finished.disconnect( state_complete )
-	state_machine.change_state( carry )
+	player_boy.animated_sprite_horse.animation_finished.disconnect( state_complete )
+	state_machine.change_state( horse )
 	pass

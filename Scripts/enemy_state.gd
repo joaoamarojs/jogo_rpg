@@ -29,3 +29,6 @@ func process( _delta : float ) -> EnemyState:
 ## What happens during the _physics_process update in this State?
 func physics( _delta : float ) -> EnemyState:
 	return null
+
+func _on_npc_destroyed():
+	state_machine.change_state( self )

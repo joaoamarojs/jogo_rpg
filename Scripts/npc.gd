@@ -1,8 +1,8 @@
 class_name NPC extends CharacterBody2D
 
 signal direction_changed( new_direction : Vector2 )
-signal enemy_damaged( hurt_box : HurtBox )
-signal enemy_destroyed( hurt_box : HurtBox )
+signal npc_damaged( hurt_box : HurtBox )
+signal npc_destroyed( hurt_box : HurtBox )
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
 

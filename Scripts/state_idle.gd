@@ -11,6 +11,7 @@ var isSleeping = false
 
 ## What happens when the player enters this State?
 func enter() -> void:
+	player_boy.on_horse = false
 	cpu_particles_2d.emitting = false
 	inactive_time = 0.0
 	isSleeping = false

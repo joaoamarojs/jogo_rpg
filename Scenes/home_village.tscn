@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bloieslqnbbkx"]
+[gd_scene load_steps=28 format=4 uid="uid://bloieslqnbbkx"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_yyg8d"]
 [ext_resource type="AudioStream" uid="uid://c4qfyh7q4wvqf" path="res://Resources/Sounds/home_village_theme.wav" id="2_hu1mt"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://dkkklkdi505se" path="res://Scenes/dialog_interaction.tscn" id="13_rdlwd"]
 [ext_resource type="Script" path="res://Scripts/dialog_text.gd" id="14_thnt3"]
 [ext_resource type="PackedScene" uid="uid://ccl20qe6rrln5" path="res://Scenes/npc_villager.tscn" id="15_qlgom"]
+[ext_resource type="PackedScene" uid="uid://dw2nb0crm8u4u" path="res://Scenes/npc_horse.tscn" id="16_1q175"]
 [ext_resource type="PackedScene" uid="uid://xd552rv2jlh7" path="res://Scenes/house.tscn" id="17_u6lh0"]
 [ext_resource type="PackedScene" uid="uid://d6i8vio1dnfj" path="res://Scenes/fountain.tscn" id="18_dj5jd"]
 [ext_resource type="PackedScene" uid="uid://cbrhuaduyaqpn" path="res://Scenes/npc_pickaxe.tscn" id="19_2x7qe"]
@@ -252,3 +253,6 @@ side = 3
 texture_filter = 1
 position = Vector2(296, 369)
 side = 3
+
+[node name="NPCBrother" parent="." instance=ExtResource("16_1q175")]
+position = Vector2(498.168, 205.414)

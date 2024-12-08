@@ -39,6 +39,7 @@ func open_door() -> void:
 		await animated_sprite.animation_finished
 		collision_shape.disabled = true
 		is_open_data.set_value()
+		get_tree().paused = false
 	else:
 		audio.stream = locked_audio
 		collision_shape.disabled = false

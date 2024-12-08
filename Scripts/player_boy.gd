@@ -11,7 +11,7 @@ var direction : Vector2 = Vector2.ZERO
 var invulnerable : bool = false
 var hp : int = 12
 var max_hp : int = 12
-var has_sword : bool = false
+var has_sword : bool = true
 var on_horse : bool = false
 
 @onready var animated_sprite_horse = $AnimatedSpriteHorse
@@ -80,7 +80,7 @@ func update_animation( state : String ) -> void:
 	if on_horse:
 		animated_sprite_horse.visible = true
 		animated_sprite.visible = false
-		animated_sprite_horse.play(anim_direction() + "_" +  state)
+		animated_sprite_horse.play( anim_direction() + "_" +  state)
 	else:
 		animated_sprite.visible = true
 		animated_sprite_horse.visible = false	

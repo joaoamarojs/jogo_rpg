@@ -78,17 +78,14 @@ inventory_item = ExtResource("10_dqaqx")
 pickup_once = true
 
 [node name="BallPlace" parent="." instance=ExtResource("7_nm7g4")]
-texture_filter = 1
 position = Vector2(56, 71)
 blocked_id = 1
 
 [node name="BallPlace2" parent="." instance=ExtResource("7_nm7g4")]
-texture_filter = 1
 position = Vector2(344, 71)
 blocked_id = 2
 
 [node name="BallPlace3" parent="." instance=ExtResource("7_nm7g4")]
-texture_filter = 1
 position = Vector2(344, 167)
 blocked_id = 3
 

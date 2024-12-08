@@ -11,6 +11,7 @@ var next_state : State = null
 
 @onready var idle : State = $"../Idle"
 @onready var death: State_Death = $"../Death"
+@onready var horse = $"../Horse"
 
 
 func init() -> void:
@@ -19,7 +20,10 @@ func init() -> void:
 
 ## What happens when the player enters this State?
 func enter() -> void:
-	player_boy.animated_sprite.animation_finished.connect( _animation_finished )
+	if player_boy.on_horse:
+		player_boy.animated_sprite_horse.animation_finished.connect( _animation_finished )
+	else:
+		player_boy.animated_sprite.animation_finished.connect( _animation_finished )
 	
 	direction = player_boy.global_position.direction_to( hurt_box.global_position )
 	player_boy.velocity = direction * -knockback_speed
@@ -29,13 +33,17 @@ func enter() -> void:
 	player_boy.make_invulnerable( invulnerable_duration )
 	
 	PlayerManager.shake_camera( hurt_box.damage / 2)
+	
 	pass
 
 
 ## What happens when the player exits this State?
 func exit() -> void:
 	next_state = null
-	player_boy.animated_sprite.animation_finished.disconnect( _animation_finished )
+	if player_boy.on_horse:
+		player_boy.animated_sprite_horse.animation_finished.disconnect( _animation_finished )
+	else:
+		player_boy.animated_sprite.animation_finished.disconnect( _animation_finished )
 	pass
 
 
@@ -63,6 +71,10 @@ func _player_damaged( _hurt_box : HurtBox ) -> void:
 
 
 func _animation_finished() -> void:
-	next_state = idle
+	if player_boy.on_horse:
+		next_state = horse
+	else:
+		next_state = idle	
+		
 	if player_boy.hp <= 0:
 		next_state = death

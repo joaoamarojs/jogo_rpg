@@ -24,7 +24,6 @@ func enter() -> void:
 
 ## What happens when the player exits this State?
 func exit() -> void:
-	player_boy.on_horse = false
 	pass
 
 

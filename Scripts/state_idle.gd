@@ -51,6 +51,4 @@ func handle_input( _event: InputEvent ) -> State:
 			return sword_attack
 	if _event.is_action_pressed("interact"):
 		PlayerManager.interact()
-	if _event.is_action_pressed("horse"):
-		return horse
 	return null

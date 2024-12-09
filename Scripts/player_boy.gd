@@ -137,8 +137,8 @@ func pickup_item( _t : Throwable ) -> void:
 	pass
 
 func mount_horse( _h : Mount_Area ) -> void:
-	state_machine.change_state( mount )
 	horse.mount_area = _h
+	state_machine.change_state( mount )
 	pass
 
 func revive_player() -> void:

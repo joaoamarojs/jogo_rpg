@@ -1,22 +1,26 @@
-class_name State_Mount extends State
+class_name State_Unmount extends State
 
-@export var mount_audio : AudioStream
+@export var unmount_audio : AudioStream
 
+@onready var idle = $"../Idle"
 @onready var horse : State = $"../Horse"
-@onready var thrown = $"../Thrown"
+
+var mount_area : Mount_Area
+
+
 
 
 ## What happens when the player enters this State?
-func enter() -> void:		
-	player_boy.cardinal_direction = horse.mount_area.horse.cardinal_direction
+func enter() -> void:
+	mount_area = horse.mount_area	
 	player_boy.animated_sprite_horse.scale.x = -1 if player_boy.cardinal_direction == Vector2.LEFT else 1
 	player_boy.direction_changed.emit(player_boy.cardinal_direction)
-	player_boy.on_horse = true
-	player_boy.update_animation( "mount_" + horse.mount_area.side)
+	player_boy.update_animation( "unmount_" + horse.mount_area.side)
 	player_boy.animated_sprite_horse.animation_finished.connect( state_complete )
 	await player_boy.animated_sprite_horse.animation_finished
-	player_boy.audio.stream = mount_audio
+	player_boy.audio.stream = unmount_audio
 	player_boy.audio.play()
+	mount_area.unmount(true if horse.mount_area.side == "left" else false)
 	pass
 
 
@@ -44,8 +48,5 @@ func handle_input( _event: InputEvent ) -> State:
 
 func state_complete() -> void:
 	player_boy.animated_sprite_horse.animation_finished.disconnect( state_complete )
-	if PlayerManager.player_boy.can_mount:
-		state_machine.change_state( horse )
-	else:
-		state_machine.change_state( thrown )
+	state_machine.change_state( idle )
 	pass

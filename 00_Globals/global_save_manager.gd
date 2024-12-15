@@ -16,6 +16,11 @@ var current_save : Dictionary = {
 		pos_y = 0,
 		has_sword = false
 	},
+	horse = {
+		pos_x = 0,
+		pos_y = 0,
+		scene_path = ""
+	},
 	items = [],
 	persistence = [],
 	quests = [],
@@ -27,12 +32,14 @@ var current_save : Dictionary = {
 func save_game() -> void:
 	update_player_data()
 	update_scene_path()
+	update_horse_data()
 	update_item_data()
-	var file := FileAccess.open( SAVE_PATH + "save.sav", FileAccess.WRITE )
-	var save_json = JSON.stringify( current_save )
-	file.store_line( save_json )
+	
+	var file := FileAccess.open(SAVE_PATH + "save.sav", FileAccess.WRITE)
+	var save_json = JSON.stringify(current_save)
+	file.store_line(save_json)
 	game_saved.emit()
-	pass
+
 
 
 func get_save_file() -> FileAccess:
@@ -43,19 +50,20 @@ func get_save_file() -> FileAccess:
 func load_game() -> void:
 	var file := get_save_file()
 	var json := JSON.new()
-	json.parse( file.get_line() )
-	var save_dict : Dictionary = json.get_data() as Dictionary
+	json.parse(file.get_line())
+	var save_dict: Dictionary = json.get_data() as Dictionary
 	current_save = save_dict
 	
-	LevelManager.load_new_level( current_save.scene_path, "", Vector2.ZERO )
-	
+	LevelManager.load_new_level(current_save.scene_path, "", Vector2.ZERO)
 	await LevelManager.level_load_started
 	
-	PlayerManager.set_player_position( Vector2( current_save.player_boy.pos_x, current_save.player_boy.pos_y ) )
-	PlayerManager.set_health( current_save.player_boy.hp, current_save.player_boy.max_hp )
+	PlayerManager.set_player_position(Vector2(current_save.player_boy.pos_x, current_save.player_boy.pos_y))
+	PlayerManager.set_health(current_save.player_boy.hp, current_save.player_boy.max_hp)
 	PlayerManager.player_boy.has_sword = current_save.player_boy.has_sword
-	PlayerManager.INVENTORY_DATA.parse_save_data( current_save.items )
+	PlayerManager.player_boy.can_mount = current_save.player_boy.can_mount
+	PlayerManager.INVENTORY_DATA.parse_save_data(current_save.items)
 	
+	load_horse_data()
 	await LevelManager.level_loaded
 	
 	game_loaded.emit()
@@ -71,6 +79,18 @@ func update_player_data() -> void:
 	current_save.player_boy.pos_y = p.global_position.y
 	current_save.player_boy.has_sword = p.has_sword
 
+func update_horse_data() -> void:
+	if HorseManager.horse and HorseManager.horse_spawned:
+		current_save.horse.pos_x = HorseManager.horse.global_position.x
+		current_save.horse.pos_y = HorseManager.horse.global_position.y
+		current_save.horse.scene_path = current_save.scene_path  # Atualiza para a cena atual
+
+
+func load_horse_data() -> void:
+	if current_save.horse.scene_path == current_save.scene_path:  # Só instancia se estiver na mesma cena
+		HorseManager.add_horse_instance()
+		HorseManager.set_horse_position(Vector2(current_save.horse.pos_x, current_save.horse.pos_y))
+
 
 func update_scene_path() -> void:
 	var p : String = ""
@@ -78,7 +98,6 @@ func update_scene_path() -> void:
 		if c is Level:
 			p = c.scene_file_path
 	current_save.scene_path = p
-
 
 func update_item_data() -> void:
 	current_save.items = PlayerManager.INVENTORY_DATA.get_save_data()

@@ -5,7 +5,7 @@ var mount_area : Mount_Area
 
 var walking : bool = false
 
-@onready var idle: State_Idle = $"../Idle"
+@onready var unmount: State_Unmount = $"../Unmount"
 @onready var stun: State_Stun = $"../Stun"
 
 
@@ -25,7 +25,6 @@ func enter() -> void:
 
 ## What happens when the player exits this State?
 func exit() -> void:
-	mount_area.unmount()
 	pass
 
 
@@ -50,5 +49,5 @@ func physics( _delta : float ) -> State:
 ## What happens with input events in this State?
 func handle_input( _event: InputEvent ) -> State:
 	if _event.is_action_pressed("sword_attack") or _event.is_action_pressed("interact"):
-		return idle
+		return unmount
 	return null

@@ -13,7 +13,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	pass
 
-func unmount() -> void:
+func unmount(side) -> void:
 	area_entered.connect(_on_area_enter)
 	area_exited.connect(_on_area_exit)
 	horse.position = PlayerManager.player_boy.position
@@ -23,7 +23,27 @@ func unmount() -> void:
 	horse.change_to_idle()
 	PlayerManager.player_boy.get_parent().call_deferred("add_child", horse)
 	PlayerManager.interact_handled = false
+	PlayerManager.player_boy.on_horse = false
+	var pos = horse.left.position if side else horse.right.position
+	if horse.cardinal_direction == Vector2.LEFT or horse.cardinal_direction == Vector2.RIGHT:
+		pos.x = pos.x - 4 if pos.x > 4 else pos.x + 8	
+		PlayerManager.player_boy.position.y += pos.x
+	else:
+		PlayerManager.player_boy.position.x += pos.x
+	HorseManager.horse = horse	
 	set_physics_process(true)
+
+func throw_player() -> void:
+	area_entered.connect(_on_area_enter)
+	area_exited.connect(_on_area_exit)
+	horse.position = PlayerManager.player_boy.position
+	horse.cardinal_direction = PlayerManager.player_boy.cardinal_direction
+	horse.animated_sprite.scale.x = -1 if horse.cardinal_direction == Vector2.LEFT else 1
+	horse.direction_changed.emit(horse.cardinal_direction)
+	horse.update_animation("attack")
+	await horse.animated_sprite.animation_finished
+	horse.change_to_idle()
+	HorseManager.horse = horse	
 
 func player_interact() -> void:
 	if PlayerManager.interact_handled == true:

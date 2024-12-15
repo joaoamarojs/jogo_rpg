@@ -52,13 +52,11 @@ func physics( _delta : float ) -> NPCState:
 	return null
 	
 func _on_player_away(_b : Node2D) -> void:
-	print(_b)
 	if _b is PlayerBoy:
 		_player_near = false	
 	pass	
 
 func _on_player_near(_b : Node2D) -> void:
-	print(_b)
 	if _b is PlayerBoy:
 		_player_near = true	
 	pass	

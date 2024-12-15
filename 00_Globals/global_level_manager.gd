@@ -20,6 +20,14 @@ func change_tilemap_bounds( bounds : Array[ Vector2 ] ) -> void:
 	tilemap_bounds_changed.emit( bounds )
 
 
+func get_current_scene_path() -> String:
+	var p : String = ""
+	for c in get_tree().root.get_children():
+		if c is Level:
+			p = c.scene_file_path
+	return p
+
+
 func load_new_level(
 		level_path : String,
 		_target_transition : String,

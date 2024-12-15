@@ -653,10 +653,10 @@ height = 4.0
 radius = 5.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g8icb"]
-size = Vector2(2, 7)
+size = Vector2(3, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10ovl"]
-size = Vector2(2, 7)
+size = Vector2(3, 7)
 
 [node name="NPCHorse" type="CharacterBody2D"]
 collision_layer = 0
@@ -665,9 +665,9 @@ script = ExtResource("1_tbihm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-0.5, -12)
+position = Vector2(-0.5, -6)
 sprite_frames = SubResource("SpriteFrames_ppf8d")
-animation = &"down_idle"
+animation = &"down_attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -734,11 +734,11 @@ collision_mask = 4
 script = ExtResource("10_vgu44")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NPCInteractions/MountArea"]
-position = Vector2(-10, -3.5)
+position = Vector2(-9.5, -3.5)
 shape = SubResource("RectangleShape2D_g8icb")
 debug_color = Color(0.0416585, 0, 0.7, 0.42)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="NPCInteractions/MountArea"]
-position = Vector2(10, -3.5)
+position = Vector2(9.5, -3.5)
 shape = SubResource("RectangleShape2D_10ovl")
 debug_color = Color(0.631915, 0.701961, 0, 0.419608)

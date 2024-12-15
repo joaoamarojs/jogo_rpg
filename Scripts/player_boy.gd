@@ -13,6 +13,7 @@ var hp : int = 12
 var max_hp : int = 12
 var has_sword : bool = true
 var on_horse : bool = false
+var can_mount : bool = true
 
 @onready var animated_sprite_horse = $AnimatedSpriteHorse
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSpritePlayer
@@ -23,9 +24,11 @@ var on_horse : bool = false
 @onready var held_item: Node2D = $HeldItem
 @onready var carry: State_Carry = $StateMachine/Carry
 @onready var mount = $StateMachine/Mount
+@onready var unmount = $StateMachine/Unmount
 @onready var horse = $StateMachine/Horse
 @onready var player_hurt_box: HurtBox = $Interactions/HurtBox
 @onready var interact_area = $Interactions/Interation
+@onready var collision_shape_horse = $Interactions/StaticBody2D/CollisionShapeHorse
 
 
 
@@ -78,16 +81,23 @@ func set_direction() -> bool:
 
 
 
-func update_animation( state : String ) -> void:
+func update_animation(state: String) -> void:
 	if on_horse:
-		animated_sprite_horse.visible = true
-		animated_sprite.visible = false
-		animated_sprite_horse.play( anim_direction() + "_" +  state)
+		call_deferred("_update_horse_state", true, state)
 	else:
-		animated_sprite.visible = true
-		animated_sprite_horse.visible = false	
-		animated_sprite.play( anim_direction() + "_" +  state)
+		call_deferred("_update_horse_state", false, state)
 	pass
+
+func _update_horse_state(on_horse_state: bool, state: String) -> void:
+	collision_shape_horse.disabled = !on_horse_state
+	animated_sprite_horse.visible = on_horse_state
+	animated_sprite.visible = !on_horse_state
+	
+	if on_horse_state:
+		animated_sprite_horse.play(anim_direction() + "_" + state)
+	else:
+		animated_sprite.play(anim_direction() + "_" + state)
+
 
 
 func anim_direction() -> String:
@@ -135,6 +145,7 @@ func pickup_item( _t : Throwable ) -> void:
 	state_machine.change_state( lift )
 	carry.throwable = _t
 	pass
+
 
 func mount_horse( _h : Mount_Area ) -> void:
 	horse.mount_area = _h

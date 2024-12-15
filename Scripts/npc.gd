@@ -1,25 +1,27 @@
 class_name NPC extends CharacterBody2D
 
 signal direction_changed( new_direction : Vector2 )
-signal npc_damaged( hurt_box : HurtBox )
-signal npc_destroyed( hurt_box : HurtBox )
+signal npc_damaged( Brother_hit_box : HitBox )
+signal npc_destroyed( Brother_hit_box : HitBox )
 
 const DIR_4 = [ Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP ]
+
+@export var Brother_hp : int = 1
 
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player_boy : PlayerBoy
 var invulnerable : bool = false
-var health : int = 100
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : NPCStateMachine = $NPCStateMachine
-
+@onready var Brother_hit_box: HitBox = $HitBox
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state_machine.initialize( self )
 	player_boy = PlayerManager.player_boy
+	Brother_hit_box.damaged.connect( _take_damage )
 	pass # Replace with function body.
 
 
@@ -63,3 +65,5 @@ func anim_direction() -> String:
 		return "up"
 	else:
 		return "side"
+func _take_damage(Brother_hit_box : HurtBox):
+	npc_destroyed.emit(Brother_hit_box)

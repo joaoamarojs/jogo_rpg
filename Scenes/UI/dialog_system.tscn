@@ -56,6 +56,7 @@ grow_vertical = 0
 texture = SubResource("GradientTexture2D_8ijf6")
 
 [node name="PanelContainer" type="PanelContainer" parent="DialogUI"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -71,6 +72,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_wn3mo")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="DialogUI/PanelContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_fonts/normal_font = ExtResource("4_m7v6c")
@@ -81,6 +83,7 @@ text = "Example Text
 scroll_active = false
 
 [node name="NameLabel" type="Label" parent="DialogUI"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 205.0
 offset_top = 411.0
@@ -95,6 +98,7 @@ text = "NOME"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DialogUI"]
 
 [node name="DialogProgressIndicator" type="PanelContainer" parent="DialogUI"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 929.0
 offset_top = 628.0
@@ -103,6 +107,7 @@ offset_bottom = 662.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_lul0c")
 
 [node name="Label" type="Label" parent="DialogUI/DialogProgressIndicator"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Proximo"

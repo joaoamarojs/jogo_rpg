@@ -13,7 +13,7 @@ var hp : int = 12
 var max_hp : int = 12
 var has_sword : bool = true
 var on_horse : bool = false
-var can_mount : bool = true
+var can_mount : bool = false
 
 @onready var animated_sprite_horse = $AnimatedSpriteHorse
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSpritePlayer

@@ -8,7 +8,6 @@ var current_state : NPCState
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
-	
 	pass
 
 

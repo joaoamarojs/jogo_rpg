@@ -14,7 +14,8 @@ var current_save : Dictionary = {
 		max_hp = 1,
 		pos_x = 0,
 		pos_y = 0,
-		has_sword = false
+		has_sword = false,
+		can_mount = false
 	},
 	horse = {
 		pos_x = 0,

@@ -99,7 +99,7 @@ position = Vector2(272.604, 302)
 position = Vector2(316, 328)
 
 [node name="HorseSpawn" parent="." instance=ExtResource("16_b6n5t")]
-position = Vector2(296, 325)
+position = Vector2(265, 301)
 
 [node name="LevelTransition" parent="." instance=ExtResource("11_fxo2h")]
 position = Vector2(320, 15)

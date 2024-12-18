@@ -8,8 +8,6 @@ var horse_spawned : bool = false
 
 func _ready() -> void:
 	add_horse_instance()
-	await get_tree().create_timer(0.2).timeout
-	horse_spawned = true
 
 
 func add_horse_instance() -> void:

@@ -1771,9 +1771,7 @@ autoplay = "down_idle"
 texture_filter = 1
 position = Vector2(-0.5, -15)
 sprite_frames = SubResource("SpriteFrames_fnj0t")
-animation = &"side_mount_right"
-frame = 5
-frame_progress = 1.0
+animation = &"up_unmount_right"
 
 [node name="CollisionShapePlayer" type="CollisionShape2D" parent="."]
 rotation = 1.5708

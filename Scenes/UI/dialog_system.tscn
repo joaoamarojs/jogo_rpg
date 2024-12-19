@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds1yevy6x75pb"]
+[gd_scene load_steps=13 format=3 uid="uid://ds1yevy6x75pb"]
 
 [ext_resource type="Script" path="res://Scripts/dialog_system.gd" id="1_76pqr"]
 [ext_resource type="Texture2D" uid="uid://crawcjkiemptc" path="res://Assets/sprites/UI/font.png" id="2_o3tyy"]
@@ -30,6 +30,53 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_anwln"]
+bg_color = Color(0, 0, 0, 0.286275)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ublt"]
+bg_color = Color(0, 0, 0, 0.45098)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kb8xk"]
+bg_color = Color(0, 0, 0, 0.698039)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="Theme" id="Theme_gwfts"]
+default_font = ExtResource("4_m7v6c")
+default_font_size = 38
+Button/colors/font_focus_color = Color(0.8, 0.631373, 0, 1)
+Button/colors/icon_focus_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_color = Color(1, 1, 1, 0)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+Button/colors/icon_normal_color = Color(1, 1, 1, 0)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 0)
+Button/styles/focus = SubResource("StyleBoxFlat_anwln")
+Button/styles/hover = SubResource("StyleBoxFlat_anwln")
+Button/styles/normal = SubResource("StyleBoxFlat_2ublt")
+Button/styles/pressed = SubResource("StyleBoxFlat_kb8xk")
 
 [node name="DialogSystem" type="CanvasLayer"]
 process_mode = 3
@@ -111,3 +158,44 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Proximo"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogUI"]
+visible = false
+layout_mode = 0
+offset_left = 267.0
+offset_top = 64.0
+offset_right = 939.0
+offset_bottom = 395.0
+theme = SubResource("Theme_gwfts")
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button" type="Button" parent="DialogUI/VBoxContainer"]
+layout_mode = 2
+text = "Escolha 1
+"
+alignment = 0
+
+[node name="Button2" type="Button" parent="DialogUI/VBoxContainer"]
+layout_mode = 2
+text = "Escolha 1
+"
+alignment = 0
+
+[node name="Button3" type="Button" parent="DialogUI/VBoxContainer"]
+layout_mode = 2
+text = "Escolha 1
+"
+alignment = 0
+
+[node name="Button4" type="Button" parent="DialogUI/VBoxContainer"]
+layout_mode = 2
+text = "Escolha 1
+"
+alignment = 0
+
+[node name="Button5" type="Button" parent="DialogUI/VBoxContainer"]
+layout_mode = 2
+text = "Escolha 1
+"
+alignment = 0

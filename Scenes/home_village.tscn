@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://bloieslqnbbkx"]
+[gd_scene load_steps=32 format=4 uid="uid://bloieslqnbbkx"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_yyg8d"]
 [ext_resource type="AudioStream" uid="uid://c4qfyh7q4wvqf" path="res://Resources/Sounds/home_village_theme.wav" id="2_hu1mt"]
@@ -8,11 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://2qtrevekgf1s" path="res://Scenes/player_boy_spawn.tscn" id="10_bvxt8"]
 [ext_resource type="PackedScene" uid="uid://4drxtr7s3djb" path="res://Scenes/level_transition.tscn" id="11_fxo2h"]
 [ext_resource type="PackedScene" uid="uid://oteqalgn1ov6" path="res://Scenes/npc_questions.tscn" id="12_kxfgf"]
+[ext_resource type="Script" path="res://Scripts/dialog_choice.gd" id="12_t7fpe"]
+[ext_resource type="Script" path="res://Scripts/dialog_branch.gd" id="13_jwlcx"]
 [ext_resource type="PackedScene" uid="uid://dkkklkdi505se" path="res://Scenes/dialog_interaction.tscn" id="13_rdlwd"]
 [ext_resource type="Script" path="res://Scripts/dialog_text.gd" id="14_thnt3"]
 [ext_resource type="PackedScene" uid="uid://ccl20qe6rrln5" path="res://Scenes/npc_villager.tscn" id="15_qlgom"]
 [ext_resource type="PackedScene" uid="uid://d34yskpbie3m" path="res://Scenes/horse_spawn.tscn" id="16_b6n5t"]
 [ext_resource type="PackedScene" uid="uid://xd552rv2jlh7" path="res://Scenes/house.tscn" id="17_u6lh0"]
+[ext_resource type="PackedScene" uid="uid://pt02x748yfo" path="res://Scenes/sign.tscn" id="17_x821e"]
 [ext_resource type="PackedScene" uid="uid://d6i8vio1dnfj" path="res://Scenes/fountain.tscn" id="18_dj5jd"]
 [ext_resource type="PackedScene" uid="uid://cbrhuaduyaqpn" path="res://Scenes/npc_pickaxe.tscn" id="19_2x7qe"]
 [ext_resource type="PackedScene" uid="uid://bh2pfrf7p4xuf" path="res://Scenes/decoration_lamp.tscn" id="20_squ0w"]
@@ -72,6 +75,11 @@ script = ExtResource("8_stnjo")
 npc_name = "Vizinho"
 dialog_audio_pitch = 1.0
 
+[sub_resource type="Resource" id="Resource_8x0su"]
+script = ExtResource("8_stnjo")
+npc_name = " "
+dialog_audio_pitch = 1.0
+
 [node name="home_village" type="Node2D"]
 y_sort_enabled = true
 position = Vector2(0, 1)
@@ -106,6 +114,13 @@ position = Vector2(320, 15)
 level = "res://Scenes/forest.tscn"
 side = 2
 
+[node name="LevelTransition2" parent="." instance=ExtResource("11_fxo2h")]
+position = Vector2(-15.6683, 254.663)
+
+[node name="LevelTransition3" parent="." instance=ExtResource("11_fxo2h")]
+position = Vector2(320.089, 494.693)
+side = 3
+
 [node name="NPCQuestions" parent="." instance=ExtResource("12_kxfgf")]
 position = Vector2(363, 249)
 
@@ -113,13 +128,32 @@ position = Vector2(363, 249)
 
 [node name="DialogText2" type="Node" parent="NPCQuestions/DialogInteraction"]
 script = ExtResource("14_thnt3")
-text = "Tá vendo esses baus ai?
-Apareceram aqui hoje cedo, e ninguem teve coragem de abrir..."
+text = "Tá vendo esse cavalo ai?
+Apareceu aqui hoje cedo, e ninguem conseguiu monta-lo"
 npc_info = SubResource("Resource_pdod0")
 
-[node name="DialogText" type="Node" parent="NPCQuestions/DialogInteraction"]
+[node name="DialogChoice" type="Node" parent="NPCQuestions/DialogInteraction"]
+script = ExtResource("12_t7fpe")
+npc_info = SubResource("Resource_pdod0")
+
+[node name="DialogBranch" type="Node" parent="NPCQuestions/DialogInteraction/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "Eu consigo!"
+npc_info = SubResource("Resource_ug0m5")
+
+[node name="DialogText" type="Node" parent="NPCQuestions/DialogInteraction/DialogChoice/DialogBranch"]
 script = ExtResource("14_thnt3")
-text = "Será que se você [color=red]interagir[/color] com eles encontrará algo de interessante?"
+text = "Será que se você [color=red]interagir[/color] com ele vai conseguir monta-lo?"
+npc_info = SubResource("Resource_ug0m5")
+
+[node name="DialogBranch2" type="Node" parent="NPCQuestions/DialogInteraction/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "Parece dificil mesmo..."
+npc_info = SubResource("Resource_ug0m5")
+
+[node name="DialogText" type="Node" parent="NPCQuestions/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("14_thnt3")
+text = "Você não vai nem tentar?"
 npc_info = SubResource("Resource_ug0m5")
 
 [node name="NPCVillager" parent="." instance=ExtResource("15_qlgom")]
@@ -200,24 +234,99 @@ script = ExtResource("14_thnt3")
 text = "ESSA PORRA DESSE TERREMOTO!"
 npc_info = SubResource("Resource_yskt0")
 
-[node name="DialogText" type="Node" parent="NPCPickaxe/DialogInteraction"]
+[node name="DialogChoice" type="Node" parent="NPCPickaxe/DialogInteraction"]
+script = ExtResource("12_t7fpe")
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogBranch" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "Bom dia Vizinho..."
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogText" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch"]
 script = ExtResource("14_thnt3")
 text = "Opa... Bom dia, criança... Tio tá um pouco nervoso..."
 npc_info = SubResource("Resource_ktxdd")
 
-[node name="DialogText3" type="Node" parent="NPCPickaxe/DialogInteraction"]
+[node name="DialogText3" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch"]
 script = ExtResource("14_thnt3")
 text = "O terremoto fez essas pedras cairem no caminho pra vila vizinha.
 Vou demorar o dia inteiro pra tirar tudo...    MERDA!"
 npc_info = SubResource("Resource_vwqn0")
 
-[node name="DialogText4" type="Node" parent="NPCPickaxe/DialogInteraction"]
+[node name="DialogChoice" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch"]
+script = ExtResource("12_t7fpe")
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogBranch" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "Posso usar seu machado?"
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogText" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("14_thnt3")
+text = "Você quer usar meu machado para cortar madeira?
+Você é muito pequeno para usar um machado sozinho... É perigoso..."
+npc_info = SubResource("Resource_fcrix")
+
+[node name="DialogText2" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("14_thnt3")
+text = "Mas se você pegar uma agua para mim eu te ajudo a cortar quando terminar aqui.
+
+OK?"
+npc_info = SubResource("Resource_fcrix")
+
+[node name="DialogChoice" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("12_t7fpe")
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogBranch" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "Feito!"
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogText" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice/DialogBranch"]
+script = ExtResource("14_thnt3")
+text = "Muito obrigado, criança
+
+Você é um bom garoto..."
+npc_info = SubResource("Resource_fcrix")
+
+[node name="DialogBranch2" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "Deixa para la..."
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogText4" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch/DialogChoice/DialogBranch2"]
+script = ExtResource("14_thnt3")
+text = "Então tá bom, deixa o tio trabalhar em paz, ok?
+
+
+Criança mimada..."
+npc_info = SubResource("Resource_fcrix")
+
+[node name="DialogBranch2" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "Vamos brincar?"
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogText4" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch/DialogChoice/DialogBranch2"]
 script = ExtResource("14_thnt3")
 text = "Desculpa, criança...
 
 
 Vai brincar e deixa o tio trabalhar, ok?"
 npc_info = SubResource("Resource_fcrix")
+
+[node name="DialogBranch2" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice"]
+script = ExtResource("13_jwlcx")
+text = "(Sair de fininho)"
+npc_info = SubResource("Resource_yskt0")
+
+[node name="DialogText" type="Node" parent="NPCPickaxe/DialogInteraction/DialogChoice/DialogBranch2"]
+script = ExtResource("14_thnt3")
+text = "Você saiu sem ser notado."
+npc_info = SubResource("Resource_8x0su")
 
 [node name="DecorationLamp" parent="." instance=ExtResource("20_squ0w")]
 texture_filter = 1
@@ -256,3 +365,27 @@ side = 3
 texture_filter = 1
 position = Vector2(296, 369)
 side = 3
+
+[node name="sign" parent="." instance=ExtResource("17_x821e")]
+position = Vector2(23, 229)
+type = 0
+qtd_placas = 1
+sign_2 = 1
+
+[node name="sign2" parent="." instance=ExtResource("17_x821e")]
+position = Vector2(622.937, 228.48)
+type = 0
+qtd_placas = 1
+sign = 2
+
+[node name="sign3" parent="." instance=ExtResource("17_x821e")]
+position = Vector2(295.446, 452.47)
+type = 0
+qtd_placas = 1
+sign = 1
+
+[node name="sign4" parent="." instance=ExtResource("17_x821e")]
+position = Vector2(344.835, 46.6229)
+type = 0
+qtd_placas = 1
+sign = 1

@@ -13,6 +13,8 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("toggle_inventory"):
 		if is_opened == false:
+			if DialogSystem.is_active:
+				return
 			show_inventory()
 		else:
 			hide_inventory()

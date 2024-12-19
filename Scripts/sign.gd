@@ -2,116 +2,137 @@
 class_name Sign extends StaticBody2D
 
 enum TYPE { SMALL, MEDIUM, BIG_LEFT, BIG_RIGHT }
-enum STYLE_SMALL { MIDDLE, RIGHT, LEFT }
-enum STYLE_OTHERS { MIDDLE, RIGHT, LEFT, DOUBLE_MIDDLE, DOUBLE_RIGHT, DOUBLE_LEFT, TOP_MIDDLE_BOTTOM_RIGHT, TOP_LEFT_BOTTOM_RIGHT, TOP_MIDDLE_BOTTOM_LEFT, TOP_RIGHT_BOTTOM_LEFT, TOP_RIGHT_BOTTOM_MIDDLE, TOP_LEFT_BOTTOM_MIDDLE }
+enum STYLE { LEFT, MIDDLE, RIGHT }
 
 @export var type: TYPE = TYPE.SMALL:
-	set(_v):
+	set( _v ):
 		type = _v
 		_change_type()
 
-@export var style_small: STYLE_SMALL = STYLE_SMALL.MIDDLE:
-	set(_v):
-		style_small = _v
-		_change_style()
+@export_range(1, 2) var qtd_placas : int:
+	set( _v ):
+		qtd_placas = _v
+		_validate_qtd_placas()
+		_update_sprite_frame()
 
-@export var style_others: STYLE_OTHERS = STYLE_OTHERS.MIDDLE:
-	set(_v):
-		style_others = _v
-		_change_style()
+@export var sign: STYLE = STYLE.LEFT:
+	set( _v ):
+		sign = _v
+		_update_sprite_frame()
+		
+@export var sign_2: STYLE = STYLE.LEFT:
+	set( _v ):
+		sign_2 = _v
+		_update_sprite_frame()
 
-@onready var collision_shape = $CollisionShape2D
 @onready var small = $small
 @onready var medium = $medium
 @onready var big_left = $big_left
 @onready var big_right = $big_right
+@onready var collision_shape = $CollisionShape2D
 
 func _ready() -> void:
 	_change_type()
-	_change_style()
 
 func _change_type() -> void:
 	if small == null:
-		small = get_node("small")
+		return
 		
 	if medium == null:
-		medium = get_node("medium")
+		return
 	
 	if big_left == null:
-		big_left = get_node("big_left")
+		return
 	
 	if big_right == null:
-		big_right = get_node("big_right")	
+		return
 		
 	if collision_shape == null:
-		collision_shape = get_node("CollisionShape2D")		
+		return
 		
 	if type == TYPE.SMALL:
-		collision_shape.shape.size = Vector2(16,4)
+		qtd_placas=1
+		collision_shape.shape.size.x = 16
+		collision_shape.shape.size.y = 4
 		small.visible = true
 		medium.visible = false
 		big_left.visible = false
 		big_right.visible = false
 	elif type == TYPE.MEDIUM:
-		collision_shape.shape.size = Vector2(6,4)
+		collision_shape.shape.size.x = 6
+		collision_shape.shape.size.y = 4
 		small.visible = false
 		medium.visible = true
 		big_left.visible = false
 		big_right.visible = false
 	elif type == TYPE.BIG_LEFT:
-		collision_shape.shape.size = Vector2(6,4)
+		collision_shape.shape.size.x = 6
+		collision_shape.shape.size.y = 4
 		small.visible = false
 		medium.visible = false
 		big_left.visible = true
 		big_right.visible = false
 	elif type == TYPE.BIG_RIGHT:
-		collision_shape.shape.size = Vector2(6,4)
+		collision_shape.shape.size.x = 6
+		collision_shape.shape.size.y = 4
 		small.visible = false
 		medium.visible = false
 		big_left.visible = false
 		big_right.visible = true
-	_change_style()
-
-func _change_style() -> void:
-	if type == TYPE.SMALL:
-		match style_small:
-			STYLE_SMALL.MIDDLE:
-				small.frame = 0
-			STYLE_SMALL.RIGHT:
-				small.frame = 1
-			STYLE_SMALL.LEFT:
-				small.frame = 2
-	elif type == TYPE.MEDIUM or type == TYPE.BIG_LEFT or type == TYPE.BIG_RIGHT:
-		var target_sprite = null
-		if type == TYPE.MEDIUM:
-			target_sprite = medium
-		elif type == TYPE.BIG_LEFT:
-			target_sprite = big_left
-		elif type == TYPE.BIG_RIGHT:
-			target_sprite = big_right
 		
-		match style_others:
-			STYLE_OTHERS.MIDDLE:
-				target_sprite.frame = 0
-			STYLE_OTHERS.RIGHT:
-				target_sprite.frame = 1
-			STYLE_OTHERS.LEFT:
-				target_sprite.frame = 2
-			STYLE_OTHERS.DOUBLE_MIDDLE:
-				target_sprite.frame = 3
-			STYLE_OTHERS.DOUBLE_RIGHT:
-				target_sprite.frame = 4
-			STYLE_OTHERS.DOUBLE_LEFT:
-				target_sprite.frame = 5
-			STYLE_OTHERS.TOP_MIDDLE_BOTTOM_RIGHT:
-				target_sprite.frame = 6
-			STYLE_OTHERS.TOP_LEFT_BOTTOM_RIGHT:
-				target_sprite.frame = 7
-			STYLE_OTHERS.TOP_MIDDLE_BOTTOM_LEFT:
-				target_sprite.frame = 8
-			STYLE_OTHERS.TOP_RIGHT_BOTTOM_LEFT:
-				target_sprite.frame = 9
-			STYLE_OTHERS.TOP_RIGHT_BOTTOM_MIDDLE:
-				target_sprite.frame = 10
-			STYLE_OTHERS.TOP_LEFT_BOTTOM_MIDDLE:
-				target_sprite.frame = 11
+	_update_sprite_frame()	
+
+func _validate_qtd_placas() -> void:
+	if type == TYPE.SMALL and qtd_placas > 1:
+		qtd_placas = 1  # Ajusta automaticamente a quantidade de placas
+		print("Quantidade de placas ajustada para 1, pois o tipo é SMALL.")
+		
+func _update_sprite_frame() -> void:
+	var sprite: Sprite2D = _get_visible_sprite()
+	if sprite == null:
+		return
+	
+	var frame = 0
+	
+	match type:
+		TYPE.SMALL:
+			if qtd_placas == 1:
+				match sign:
+					STYLE.MIDDLE: frame = 0
+					STYLE.RIGHT: frame = 1
+					STYLE.LEFT: frame = 2
+		TYPE.MEDIUM, TYPE.BIG_LEFT, TYPE.BIG_RIGHT:
+			if qtd_placas == 1:
+				match sign:
+					STYLE.MIDDLE: frame = 0
+					STYLE.RIGHT: frame = 1
+					STYLE.LEFT: frame = 2
+			elif qtd_placas == 2:
+				match sign:
+					STYLE.MIDDLE:
+						match sign_2:
+							STYLE.MIDDLE: frame = 3
+							STYLE.RIGHT: frame = 6
+							STYLE.LEFT: frame = 8
+					STYLE.RIGHT:
+						match sign_2:
+							STYLE.RIGHT: frame = 4
+							STYLE.LEFT: frame = 9
+							STYLE.MIDDLE: frame = 10
+					STYLE.LEFT:
+						match sign_2:
+							STYLE.LEFT: frame = 5
+							STYLE.MIDDLE: frame = 11
+							STYLE.RIGHT: frame = 7
+	sprite.frame = frame
+
+func _get_visible_sprite() -> Sprite2D:
+	if type == TYPE.SMALL:
+		return small
+	elif type == TYPE.MEDIUM:
+		return medium
+	elif type == TYPE.BIG_LEFT:
+		return big_left
+	elif type == TYPE.BIG_RIGHT:
+		return big_right
+	return null
